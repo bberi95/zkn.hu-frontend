@@ -15,6 +15,7 @@ import { AuthoritiesComponent } from './authorities/authorities.component';
 import { PermitsComponent } from './permits/permits.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserformComponent } from './userform/userform.component';
 import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'authorities', component: AuthoritiesComponent },
   { path: 'permits', component: PermitsComponent },
   { path: 'archives', component: ArchivesComponent },
+  { path: 'userform', component: UserformComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];

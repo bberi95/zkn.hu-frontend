@@ -38,6 +38,7 @@ import { ResultService } from './result.service';
 import { DataService } from './data.service';
 import { FullmenuComponent } from './menu/fullmenu/fullmenu.component';
 import { SmallmenuComponent } from './menu/smallmenu/smallmenu.component';
+import { UserformComponent } from './userform/userform.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { SmallmenuComponent } from './menu/smallmenu/smallmenu.component';
     GarbageComponent,
     TrashfinderComponent,
     FullmenuComponent,
-    SmallmenuComponent
+    SmallmenuComponent,
+    UserformComponent
   ],
   imports: [
     BrowserModule,
