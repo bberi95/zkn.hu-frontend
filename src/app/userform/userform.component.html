@@ -1,27 +1,49 @@
-<form>
+<div>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+</div>
+
+<form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
+
     <div>
         <label for="name">
             Név:
         </label><br>
-        <input type="text" id="name" name="name"><br>
+        <input type="text" id="name" formControlName="name" required>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger">
+        <div *ngIf="name.errors.required">
+            A név megadása kötelező!
+        </div>
     </div>
+    </div>
+
     <div>
         <label for="userID">
             Ügyfélkód:
         </label><br>
-        <input type="number" id="userID" name="userID"><br>
+        <input type="number" id="userID" formControlName="userID"><br>
     </div>
+
     <div>
         <label for="address">
             Cím:
         </label><br>
-        <input type="text" id="address" name="address"><br><br>
+        <input type="text" id="address" formControlName="address"><br><br>
     </div>
+
     <div>
         <label for="email">
             E-mail cím:
         </label><br>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email" formControlName="email"><br><br>
     </div>
+
+    <p>
+        Form Status: {{ transportForm.status }}
+    </p>
+
     <button class="button" type="submit">Küldés</button>
+
 </form> 
