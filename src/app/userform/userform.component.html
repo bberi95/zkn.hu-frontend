@@ -5,45 +5,63 @@
 </div>
 
 <form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
+    <table>
+        <tr>
+            <td>
+                <label for ="name">
+                    Név:
+                </label>
+            </td>
+            <td>
+                <input type="text" id="name" formControlName="name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="userID">
+                    Ügyfélkód:
+                </label>
+            </td>
+            <td>
+                <input type="number" id="userID" formControlName="userID">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="address">
+                    Cím:
+                </label>
+            </td>
+            <td>
+                <input type="text" id="address" formControlName="address">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">
+                    E-mail cím:
+                </label>
+            </td>
+            <td>
+                <input type="email" id="email" formControlName="email">
+            </td>
+        </tr>
+    </table>
 
-    <div>
-        <label for="name">
-            Név:
-        </label><br>
-        <input type="text" id="name" formControlName="name" required>
-        <div *ngIf="name.invalid && (name.dirty || name.touched)"
-        class="alert alert-danger">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
         <div *ngIf="name.errors.required">
             A név megadása kötelező!
         </div>
     </div>
-    </div>
 
     <div>
-        <label for="userID">
-            Ügyfélkód:
-        </label><br>
-        <input type="number" id="userID" formControlName="userID"><br>
+        <p>
+            Form Status: {{ transportForm.status }}
+        </p>
     </div>
 
-    <div>
-        <label for="address">
-            Cím:
-        </label><br>
-        <input type="text" id="address" formControlName="address"><br><br>
+    <div class="send">
+        <button class="button" type="submit" [disabled]="!transportForm.valid">Beküldés</button>
     </div>
-
-    <div>
-        <label for="email">
-            E-mail cím:
-        </label><br>
-        <input type="email" id="email" formControlName="email"><br><br>
-    </div>
-
-    <p>
-        Form Status: {{ transportForm.status }}
-    </p>
-
-    <button class="button" type="submit">Küldés</button>
 
 </form> 

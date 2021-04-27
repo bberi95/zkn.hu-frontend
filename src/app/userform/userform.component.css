@@ -1,0 +1,35 @@
+div {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 5px;
+}
+
+table {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.send {
+    margin: auto;
+    position: relative;
+    min-height: 30px;
+    width: 50%;
+}
+
+.button {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+}
