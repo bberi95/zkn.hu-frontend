@@ -28,6 +28,21 @@
         </tr>
         <tr>
             <td>
+                <label for="district">
+                    Városrész:
+                </label>
+            </td>
+            <td>
+                <select id="district" formControlName="district">
+                    <option value="">Válassz!</option>
+                    <option *ngFor="let district of districts" [ngValue]="district.value">
+                        {{district.viewValue}}
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <label for="address">
                     Cím:
                 </label>
@@ -47,6 +62,18 @@
             </td>
         </tr>
     </table>
+
+    <div>
+        <input type="checkbox" formControlName="katt" id="katt" value="katt">
+        <label for="katt">Kattints rám!</label>
+    </div>
+
+    <div>
+        <input type="radio" formControlName="test" id ="test" value="test">Egyik
+        <!-- <label for="test">testlabel</label> -->
+        <input type="radio" formControlName="test" id="asd" value="asd">Másik
+        <!-- <label for="asd">asdlabel</label> -->
+    </div>
 
     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
         <div *ngIf="name.errors.required">
