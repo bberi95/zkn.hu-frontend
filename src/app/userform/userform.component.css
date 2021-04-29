@@ -5,7 +5,7 @@ div {
 }
 
 table {
-    width: 60%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -33,3 +33,11 @@ p {
     -ms-transform: translate(-50%);
     transform: translate(-50%);
 }
+
+/* input {
+    width: 100%;
+}
+
+td {
+    width: 50%;
+} */

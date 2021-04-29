@@ -1,20 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserformService } from '../userform.service';
-import { User } from '../userform'
-
-interface District {
-  value: string;
-  viewValue: string;
-}
+import { UserformService} from '../userform.service';
+import { User, District, Street } from '../userform'
 
 @Component({
   selector: 'app-userform',
   templateUrl: './userform.component.html',
   styleUrls: ['./userform.component.css']
 })
+
 export class UserformComponent {
-  users: User[]
+  users: User[];
 
   districts: District[] = [
     {value: 'belvaros', viewValue: 'Belváros'},
@@ -23,17 +19,25 @@ export class UserformComponent {
     {value: 'andrashida', viewValue: 'Andráshida'}
   ];
 
+  streets: Street[] = [
+    {value: 'ady utca', viewValue: 'Ady utca'},
+    {value: 'arany janos utca', viewValue: 'Arany János utca'},
+    {value: 'batsanyi janos utca', viewValue: 'Batsányi János utca'},
+    {value: 'beke-ligeti utca', viewValue: 'Béke-ligeti utca'}
+  ];
+
   transportForm = this.formBuilder.group({
     name: "",
     userID: "",
     district: "",
+    street:"",
     address: "",
     email: "",
   });
 
   constructor(
     private formBuilder: FormBuilder,
-    private userformService: UserformService
+    private userformService: UserformService,
   ) { }
 
   onSubmit(name: string): void {
@@ -51,6 +55,7 @@ export class UserformComponent {
       name: new FormControl('', Validators.required),
       userID: new FormControl(''),
       district: new FormControl(''),
+      street: new FormControl(''),
       address: new FormControl(''),
       email: new FormControl(''),
       katt: new FormControl(''),

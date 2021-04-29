@@ -34,9 +34,24 @@
             </td>
             <td>
                 <select id="district" formControlName="district">
-                    <option value="">Válassz!</option>
+                    <option value="">Kérem válasszon!</option>
                     <option *ngFor="let district of districts" [ngValue]="district.value">
                         {{district.viewValue}}
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="street">
+                    Utca:
+                </label>
+            </td>
+            <td>
+                <select id="street" formControlName="street">
+                    <option value="">Először válasszon városzrészt!</option>
+                    <option *ngFor="let street of streets" [ngValue]="street.value">
+                        {{street.viewValue}}
                     </option>
                 </select>
             </td>
@@ -84,6 +99,9 @@
     <div>
         <p>
             Form Status: {{ transportForm.status }}
+        </p>
+        <p>
+            {{testvalue}}
         </p>
     </div>
 
