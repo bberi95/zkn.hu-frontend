@@ -47,10 +47,34 @@
                     Utca:
                 </label>
             </td>
-            <td>
+            <td *ngIf="selectedDistrict == 'Belváros'">
                 <select id="street" formControlName="street">
-                    <option value="">Először válasszon városzrészt!</option>
-                    <option *ngFor="let street of streets" [ngValue]="street.value">
+                    <option value="">Kérem válasszon!</option>
+                    <option *ngFor="let street of streetsBelvaros" [ngValue]="street.value">
+                        {{street.viewValue}}
+                    </option>
+                </select>
+            </td>
+            <td *ngIf="selectedDistrict == 'Kertváros'">
+                <select id="street" formControlName="street">
+                    <option value="">Kérem válasszon!</option>
+                    <option *ngFor="let street of streetsKertvaros" [ngValue]="street.value">
+                        {{street.viewValue}}
+                    </option>
+                </select>
+            </td>
+            <td *ngIf="selectedDistrict == 'paterdomb'">
+                <select id="street" formControlName="street">
+                    <option value="">Kérem válasszon!</option>
+                    <option *ngFor="let street of streetsPaterdomb" [ngValue]="street.value">
+                        {{street.viewValue}}
+                    </option>
+                </select>
+            </td>
+            <td *ngIf="selectedDistrict == 'andrashida'">
+                <select id="street" formControlName="street">
+                    <option value="">Kérem válasszon!</option>
+                    <option *ngFor="let street of streetsAndrashida" [ngValue]="street.value">
                         {{street.viewValue}}
                     </option>
                 </select>

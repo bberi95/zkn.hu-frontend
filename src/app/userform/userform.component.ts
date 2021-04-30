@@ -1,7 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserformService} from '../userform.service';
-import { User, District, Street } from '../userform'
+import { districts, streetsAndrashida, streetsBelvaros, streetsKertvaros, streetsPaterdomb } from '../userform'
+
+export interface User {
+  name: string;
+  userID: number;
+  disctrict: string;
+  street: string;
+  address: string;
+  email: string;
+}
 
 @Component({
   selector: 'app-userform',
@@ -10,21 +19,17 @@ import { User, District, Street } from '../userform'
 })
 
 export class UserformComponent {
+  districts = districts;
+  streetsAndrashida = streetsAndrashida;
+  streetsBelvaros= streetsBelvaros;
+  streetsKertvaros = streetsKertvaros;
+  streetsPaterdomb = streetsPaterdomb;
+  selectedDistrict: string;
   users: User[];
 
-  districts: District[] = [
-    {value: 'belvaros', viewValue: 'Belváros'},
-    {value: 'kertvaros', viewValue: 'Kertváros'},
-    {value: 'paterdomb', viewValue: 'Páterdomb'},
-    {value: 'andrashida', viewValue: 'Andráshida'}
-  ];
-
-  streets: Street[] = [
-    {value: 'ady utca', viewValue: 'Ady utca'},
-    {value: 'arany janos utca', viewValue: 'Arany János utca'},
-    {value: 'batsanyi janos utca', viewValue: 'Batsányi János utca'},
-    {value: 'beke-ligeti utca', viewValue: 'Béke-ligeti utca'}
-  ];
+  @Input() set selectedDistrictName(name:string){
+    this.selectedDistrict = name
+  }
 
   transportForm = this.formBuilder.group({
     name: "",
