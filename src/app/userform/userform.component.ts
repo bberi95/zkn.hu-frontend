@@ -27,10 +27,6 @@ export class UserformComponent {
   selectedDistrict: string;
   users: User[];
 
-  @Input() set selectedDistrictName(name:string){
-    this.selectedDistrict = name
-  }
-
   transportForm = this.formBuilder.group({
     name: "",
     userID: "",

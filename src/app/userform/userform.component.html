@@ -33,7 +33,7 @@
                 </label>
             </td>
             <td>
-                <select id="district" formControlName="district">
+                <select id="district" formControlName="district" [(ngModel)]="selectedDistrict">
                     <option value="">Kérem válasszon!</option>
                     <option *ngFor="let district of districts" [ngValue]="district.value">
                         {{district.viewValue}}
@@ -47,7 +47,12 @@
                     Utca:
                 </label>
             </td>
-            <td *ngIf="selectedDistrict == 'Belváros'">
+            <td *ngIf="selectedDistrict == ''">
+                <select id="street" formControlName="street">
+                    <option value="">Előbb válassza ki a városrészt!</option>
+                </select>
+            </td>
+            <td *ngIf="selectedDistrict == 'belvaros'">
                 <select id="street" formControlName="street">
                     <option value="">Kérem válasszon!</option>
                     <option *ngFor="let street of streetsBelvaros" [ngValue]="street.value">
@@ -55,7 +60,7 @@
                     </option>
                 </select>
             </td>
-            <td *ngIf="selectedDistrict == 'Kertváros'">
+            <td *ngIf="selectedDistrict == 'kertvaros'">
                 <select id="street" formControlName="street">
                     <option value="">Kérem válasszon!</option>
                     <option *ngFor="let street of streetsKertvaros" [ngValue]="street.value">
