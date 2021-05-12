@@ -32,9 +32,14 @@ export class UserformComponent {
     userID: "",
     district: "",
     street:"",
-    address: "",
+    houseNumber: "",
     email: "",
+    phone:"",
   });
+
+  acknowledgementForm = this.formBuilder.group({
+    acknowledgement: "",
+  })
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,17 +60,23 @@ export class UserformComponent {
     this.transportForm = new FormGroup({
       name: new FormControl('', Validators.required),
       userID: new FormControl('', Validators.required),
-      district: new FormControl(''),
-      street: new FormControl(''),
-      address: new FormControl(''),
-      email: new FormControl(''),
-      katt: new FormControl(''),
-      test: new FormControl(''),
-      asd: new FormControl(''),
+      district: new FormControl('', Validators.required),
+      street: new FormControl('', Validators.required),
+      houseNumber: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      phone: new FormControl(''),
     });
+    this.acknowledgementForm = new FormGroup({
+      acknowledgement: new FormControl('', Validators.requiredTrue),
+    })
   }
 
   get name() { return this.transportForm.get('name'); }
   get userID() { return this.transportForm.get('userID'); }
+  get district() { return this.transportForm.get('district'); }
+  get street() { return this.transportForm.get('street'); }
+  get houseNumber() { return this.transportForm.get('houseNumber'); }
+  get email() { return this.transportForm.get('email'); }
+  get acknowledgement() {return this.acknowledgementForm.get('acknowledgement'); }
 
 }

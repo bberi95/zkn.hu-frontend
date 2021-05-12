@@ -4,8 +4,40 @@ div {
     padding: 5px;
 }
 
-table {
+div.nope{
+    margin: 0;
+    padding: 0;
+}
+
+.mid {
+    text-align: center;
+}
+
+.information {
+    text-align: justify;
+}
+
+.egyik {
+    width: 18%;
+}
+.masik {
+    width: 30%;
+}
+
+.hiba{
+    color: red;
+}
+/* select {
     width: 50%;
+}
+
+.bize {
+    width: 50%;
+} */
+
+table {
+    width: 100%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -17,6 +49,14 @@ input.ng-invalid.ng-touched {
 p {
     margin-left: auto;
     margin-right: auto;
+}
+
+textarea{
+    resize:none;
+}
+
+.ize {
+    margin: 5px;
 }
 
 .send {
@@ -36,12 +76,5 @@ p {
 
 label {
     font-weight: normal;
+    text-align: right;
 }
-
-/* input {
-    width: 100%;
-}
-
-td {
-    width: 50%;
-} */

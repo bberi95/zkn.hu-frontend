@@ -1,19 +1,44 @@
 <div>
-    <p>
+    <h1 class="mid">Tájékoztató szöveg a lomtalanításról</h1>
+    <p class="information">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
 </div>
 
-<form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="acknowledgementForm">
+
+    <div class="mid">
+        <p class="mid">A bejelentő felület az alábbiak elfogadása után válik elérhetővé!</p>
+        <input class="ize" type="checkbox" formControlName="acknowledgement" id="acknowledgement" value="acknowledgement">
+        <label for="acknowledgement">Kijelentem, hogy a tájékoztatóban leírtakat elolvastam és tudomásul vettem.</label>
+    </div>
+
+</form>
+
+<form [formGroup]="transportForm" (ngSubmit)="onSubmit()" *ngIf="acknowledgementForm.valid">
+
     <table>
         <tr>
-            <td>
+            <h2>Ügyfél adatai:</h2>
+        </tr>
+        <tr>
+            <td class="egyik">
                 <label for ="name">
                     Név:
                 </label>
             </td>
+            <td class="masik">
+                <input class="bize" type="text" id="name" formControlName="name" required pattern="[A-Za-z.-]{1,}">
+            </td>
             <td>
-                <input type="text" id="name" formControlName="name" required>
+                <div class="nope" *ngIf="name.invalid && (name.dirty || name.touched)" class="hiba">
+                    <div class="nope" *ngIf="name.errors.required">
+                        A név megadása kötelező!
+                    </div>
+                    <div class="nope" *ngIf="name.errors.pattern">
+                        A megadott név nem megfelelő!
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
@@ -23,7 +48,17 @@
                 </label>
             </td>
             <td>
-                <input type="number" id="userID" formControlName="userID" required>
+                <input class="bize" type="number" id="userID" formControlName="userID" required pattern="[0-9]{6,7}">
+            </td>
+            <td>
+                <div class="nope" *ngIf="userID.invalid && (userID.dirty || userID.touched)" class="hiba">
+                    <div class="nope" *ngIf="userID.errors.required">
+                        Az ügyfélkód megadása kötelező!
+                    </div>
+                    <div class="nope" *ngIf="userID.errors.pattern">
+                        Az ügyfélkód 7 karakter hosszúságú!
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
@@ -47,10 +82,7 @@
                 </label>
             </td>
             <td *ngIf="selectedDistrict == Empty">
-                <p>Ez az opció a városrész kiválasztása után válik elérhetővé.</p>
-                <!-- <select id="street" formControlName="street">
-                    <option value="">Előbb válassza ki a városrészt!</option>
-                </select> -->
+                <p>Kérem előbb válassza ki a városrészt!</p>
             </td>
             <td *ngIf="selectedDistrict == 'belvaros'">
                 <select id="street" formControlName="street">
@@ -87,12 +119,12 @@
         </tr>
         <tr>
             <td>
-                <label for="address">
-                    Cím:
+                <label for="houseNumber">
+                    Házszám:
                 </label>
             </td>
             <td>
-                <input type="text" id="address" formControlName="address">
+                <input class="bize" type="text" id="houseNumber" formControlName="houseNumber">
             </td>
         </tr>
         <tr>
@@ -102,41 +134,111 @@
                 </label>
             </td>
             <td>
-                <input type="email" id="email" formControlName="email">
+                <input class="bize" type="email" id="email" formControlName="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            </td>
+            <td>
+                <div class="nope" *ngIf="email.invalid && (email.dirty || email.touched)" class="hiba">
+                    <div class="nope" *ngIf="email.errors.required">
+                        Az e-mail cím megadása kötelező!
+                    </div>
+                    <div class="nope" *ngIf="email.errors.pattern">
+                        Az e-mail cím nem megfelelő!
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="phone">
+                    Telefonszám:
+                </label>
+            </td>
+            <td>
+                <input class="bize" type="phone" id="phone" formControlName="phone">
             </td>
         </tr>
     </table>
 
-    <div>
-        <input type="checkbox" formControlName="katt" id="katt" value="katt">
-        <label for="katt">Kattints rám!</label>
-    </div>
-
-    <div>
-        <input type="radio" formControlName="test" id ="test" value="test">Egyik
-        <!-- <label for="test">testlabel</label> -->
-        <input type="radio" formControlName="test" id="asd" value="asd">Másik
-        <!-- <label for="asd">asdlabel</label> -->
-    </div>
-
-    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+    <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
         <div *ngIf="name.errors.required">
             Hiba! A név megadása kötelező!
         </div>
-    </div>
+        <div *ngIf="name.errors.pattern">
+            Hiba! A megadott név nem megfelelő!
+        </div>
+    </div> -->
 
-    <div *ngIf="userID.invalid && (userID.dirty || userID.touched)" class="alert alert-danger">
+    <!-- <div *ngIf="userID.invalid && (userID.dirty || userID.touched)" class="hiba">
         <div *ngIf="userID.errors.required">
             Hiba! Az ügyfélkód megadása kötelező!
         </div>
+        <div *ngIf="userID.errors.pattern">
+            Hiba! Az ügyfélkód 7 karakter hosszúságú!
+        </div>
+    </div> -->
+
+    <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)" class="hiba">
+        <div *ngIf="email.errors.required">
+            Hiba! Az e-mail cím megadása kötelező!
+        </div>
+        <div *ngIf="email.errors.pattern">
+            Hiba! Az e-mail cím nem megfelelő!
+        </div>
+    </div> -->
+
+    <table>
+        <tr>
+            <td>
+                <h2>
+                    Lomhulladék jellege:
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="ize" type="checkbox" fromControlName="lomButor" id="lomButor" value="lomButor">
+                <label for="lomButor">Bútorok, berendezési tárgyak</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="ize" type="checkbox" fromControlName="lomKertiButor" id="lomKertiButor" value="lomKertiButor">
+                <label for="lomKertiButor">Kerti bútor garnitúra</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="ize" type="checkbox" fromControlName="lomJatek" id="lomJatek" value="lomJatek">
+                <label for="lomJatek">Nagyobb játék</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="ize" type="checkbox" fromControlName="lomFem" id="lomFem" value="lomFem">
+                <label for="lomFem">Fémek</label>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <label for="lomTextArea">Megjegyzés:</label>
+            </td>
+            <td>
+                <textarea id="lomTextArea" formControlName="lomTextArea" rows="5" cols="40"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <div class="mid">
+        <p class="mid">adatvédelmi tájékoztató placeholder</p>
+        <input class="ize" type="checkbox" formControlName="katt" id="katt" value="katt">
+        <label for="katt">Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.</label>
     </div>
 
-    <div>
-        <p>
-            Form Status: {{ transportForm.status }}
-        </p>
-        <p>
-            {{testvalue}}
+    <div class="mid">
+        <p class="mid">
+            reCaptcha placeholder
         </p>
     </div>
 
