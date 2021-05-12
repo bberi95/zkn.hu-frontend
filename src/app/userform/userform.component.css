@@ -34,6 +34,10 @@ p {
     transform: translate(-50%);
 }
 
+label {
+    font-weight: normal;
+}
+
 /* input {
     width: 100%;
 }

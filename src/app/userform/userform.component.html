@@ -23,18 +23,17 @@
                 </label>
             </td>
             <td>
-                <input type="number" id="userID" formControlName="userID">
+                <input type="number" id="userID" formControlName="userID" required>
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="something">
                 <label for="district">
                     Városrész:
                 </label>
             </td>
             <td>
                 <select id="district" formControlName="district" [(ngModel)]="selectedDistrict">
-                    <option value="">Kérem válasszon!</option>
                     <option *ngFor="let district of districts" [ngValue]="district.value">
                         {{district.viewValue}}
                     </option>
@@ -48,9 +47,10 @@
                 </label>
             </td>
             <td *ngIf="selectedDistrict == Empty">
-                <select id="street" formControlName="street">
+                <p>Ez az opció a városrész kiválasztása után válik elérhetővé.</p>
+                <!-- <select id="street" formControlName="street">
                     <option value="">Előbb válassza ki a városrészt!</option>
-                </select>
+                </select> -->
             </td>
             <td *ngIf="selectedDistrict == 'belvaros'">
                 <select id="street" formControlName="street">
@@ -121,7 +121,13 @@
 
     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
         <div *ngIf="name.errors.required">
-            A név megadása kötelező!
+            Hiba! A név megadása kötelező!
+        </div>
+    </div>
+
+    <div *ngIf="userID.invalid && (userID.dirty || userID.touched)" class="alert alert-danger">
+        <div *ngIf="userID.errors.required">
+            Hiba! Az ügyfélkód megadása kötelező!
         </div>
     </div>
 

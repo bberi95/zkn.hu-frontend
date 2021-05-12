@@ -54,7 +54,7 @@ export class UserformComponent {
   ngOnInit(): void {
     this.transportForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      userID: new FormControl(''),
+      userID: new FormControl('', Validators.required),
       district: new FormControl(''),
       street: new FormControl(''),
       address: new FormControl(''),
@@ -66,5 +66,6 @@ export class UserformComponent {
   }
 
   get name() { return this.transportForm.get('name'); }
+  get userID() { return this.transportForm.get('userID'); }
 
 }
