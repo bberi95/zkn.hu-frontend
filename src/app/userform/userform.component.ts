@@ -48,12 +48,20 @@ export class UserformComponent {
 
   onSubmit(name: string): void {
     // name = name.trim();
-    this.userformService.addUser({ name } as User)
-      .subscribe(user => {
-        this.users.push(user);
+    if (this.transportForm.valid){
+      document.getElementById("sendBtn").setAttribute("enabled","enabled");
+      this.userformService.addUser({ name } as User)
+        .subscribe(user => {
+          this.users.push(user);
       })
-    console.log("ok", this.transportForm.value);
-    this.transportForm.reset();
+      console.log("ok", this.transportForm.value);
+      this.transportForm.reset();
+    } else {
+      document.getElementById("sendBtn").setAttribute("disabled","disabled");
+      document.getElementById("errorTxt").innerHTML="Egy vagy több mező kitöltése hiányos vagy hibás, kérem ellenőrizze a megadott adatokat!";
+      // [disabled]="!transportForm.valid"
+    }
+    
   }
 
   ngOnInit(): void {
@@ -64,7 +72,9 @@ export class UserformComponent {
       street: new FormControl('', Validators.required),
       houseNumber: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      phone: new FormControl(''),
+      phone: new FormControl('', Validators.required),
+      lomTextArea: new FormControl(''),
+      GDPR: new FormControl('', Validators.required)
     });
     this.acknowledgementForm = new FormGroup({
       acknowledgement: new FormControl('', Validators.requiredTrue),
@@ -77,6 +87,7 @@ export class UserformComponent {
   get street() { return this.transportForm.get('street'); }
   get houseNumber() { return this.transportForm.get('houseNumber'); }
   get email() { return this.transportForm.get('email'); }
+  get phone() { return this.transportForm.get('phone'); }
   get acknowledgement() {return this.acknowledgementForm.get('acknowledgement'); }
 
 }

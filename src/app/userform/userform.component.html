@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
 <div>
     <h1 class="mid">Tájékoztató szöveg a lomtalanításról</h1>
     <p class="information">
@@ -23,14 +27,19 @@
         <form [formGroup]="transportForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <h3>Ügyfél adatai</h3>
-
+                
                 <div class="col-50">
-
-                    <label for="name">Név:</label>
+                    <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán szereplő név."></i>
+                    <label for="name" title="NHKV Zrt. által kiállított számlán szereplő név.">
+                        Név:
+                    </label>
                     <input type="text" id="name" formControlName="name" required pattern="[A-Za-z.-]{1,}" placeholder="Minta Marci">
                     <!-- ide kell még az invalidra izguló üzenet -->
-
-                    <label for="userID">Ügyfélkód:</label>
+                    
+                    <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán szereplő 7 számjegyből álló felhasználói azonosító szám."></i>
+                    <label for="userID" title="NHKV Zrt. által kiállított számlán szereplő 7 számjegyből álló felhasználói azonosító szám.">
+                        Ügyfélkód:
+                    </label>
                     <input type="number" id="userID" formControlName="userID" required pattern="[0-9]{6,7}">
                     <!-- ide kell még az invalidra izguló üzenet -->
 
@@ -51,7 +60,7 @@
 
                     <label for="street">Utca:</label>
                     <div *ngIf="selectedDistrict == Empty">
-                        <p class="utcaPlaceholder">Kérem előbb válassza ki a városrészt!</p>
+                        <input type="text" disabled="true" placeholder="Kérem előbb válassza ki a városrészt!">
                     </div>
                     <div *ngIf="selectedDistrict == 'belvaros'">
                         <select id="street" formControlName="street">
@@ -143,7 +152,9 @@
                 <span class="checkmark"></span>
                 Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.
             </label>
-            <button type="submit" [disabled]="!transportForm.valid">Beküldés</button>
+            <p class="mid">recaptcha placeholder</p>
+            <button type="submit" id="sendBtn">Beküldés</button>
+            <p class="mid error" id="errorTxt"></p>
         </form>
     </div>
 </div>
