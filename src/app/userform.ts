@@ -15,13 +15,6 @@ export const districts: District[] = [
     {value: 'andrashida', viewValue: 'Andráshida'}
 ]
 
-// export const streetsBelvaros: Street[] = [
-//     {value: 'ady utca', viewValue: 'Ady utca'},
-//     {value: 'arany janos utca', viewValue: 'Arany János utca'},
-//     {value: 'batsanyi janos utca', viewValue: 'Batsányi János utca'},
-//     {value: 'beke-ligeti utca', viewValue: 'Béke-ligeti utca'}
-// ]
-
 export const streetsKertvaros: Street[] = [
     {value: 'alsoerdei ut', viewValue: 'Alsóerdei út'},
     {value: 'atalszegett utca', viewValue: 'Átalszegett utca'},

@@ -58,6 +58,10 @@ export class DataService {
     return this.http.get<any>('/api/cal-videk');
   }
 
+  public getDistricts(): Observable<any> {
+    return this.http.get<any>('/api/districts');
+  }
+
 /*  public updateAct(act: any): Observable<any> {
     return this.http.post<any>('api/updateact', act);
   }*/

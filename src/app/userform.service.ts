@@ -1,11 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './userform/userform.component'
+
+export interface Request {
+  name: string;
+  userID: number;
+  disctrict: string;
+  street: string;
+  phone: string;
+  address: string;
+  type: string;
+  email: string;
+  text: string;
+}
+
+export interface Status {
+  sent: boolean;
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserformService {
 
   private userformUrl = 'api/userform';
@@ -18,7 +35,7 @@ export class UserformService {
     private http: HttpClient
   ) { }
 
-  addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.userformUrl, user, this.httpOptions)
+  addRequest(request: Request): Observable<Status> {
+    return this.http.post<Status>(this.userformUrl, request, this.httpOptions)
   }
 }
