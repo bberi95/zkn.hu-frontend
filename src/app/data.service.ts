@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from  '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface News {
@@ -58,11 +58,23 @@ export class DataService {
     return this.http.get<any>('/api/cal-videk');
   }
 
-  public getDistricts(): Observable<any> {
-    return this.http.get<any>('/api/districts');
+  public getStreets(district: string): Observable<any> {
+    let payload = {
+      district
+    }
+    return this.http.post<any>('/api/streets', payload);
   }
 
-/*  public updateAct(act: any): Observable<any> {
-    return this.http.post<any>('api/updateact', act);
-  }*/
+  public getAreas(): Observable<any> {
+    return this.http.get<any>('/api/areas');
+  }
+
+  public getGarbages(): Observable<any>{
+    return this.http.get<any>('/api/garbages');
+  }
+
+
+  /*  public updateAct(act: any): Observable<any> {
+      return this.http.post<any>('api/updateact', act);
+    }*/
 }

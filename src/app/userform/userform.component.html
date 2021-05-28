@@ -31,7 +31,7 @@
                     <label for="name" title="NHKV Zrt. által kiállított számlán szereplő név.">
                         Név:
                     </label>
-                    <input type="text" id="name" [(ngModel)]="request.name" name="name"
+                    <input type="text" id="name" [(ngModel)]="name" name="name"
                         required pattern="[A-Za-z.-]{1,}" placeholder="Minta Marci" #nameInput="ngModel">
                     
                     <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán 
@@ -40,69 +40,45 @@
                         álló felhasználói azonosító szám.">
                         Ügyfélkód:
                     </label>
-                    <input type="number" id="userID" [(ngModel)]="request.userID" name="userID"
+                    <input type="number" id="userID" [(ngModel)]="userID" name="userID"
                         required pattern="[0-9]{6,7}" placeholder="1234567" #userIDInput="ngModel">
 
                     <label for="email">
                         E-mail cím:
                     </label>
-                    <input type="email" id="email" [(ngModel)]="request.email" name="email" required
+                    <input type="email" id="email" [(ngModel)]="email" name="email" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="minta@zkn.hu"
                         #emailInput="ngModel">
 
                     <label for="phone">
                         Telefonszám:
                     </label>
-                    <input type="phone" id="phone" [(ngModel)]="request.phone" name="phone"
+                    <input type="phone" id="phone" [(ngModel)]="phone" name="phone"
                         required placeholder="+3692/900-036" #phoneInput="ngModel">
                 </div>
                 <div class="col-50">
                     <label for="district">Városrész:</label>
                     <select id="district" [(ngModel)]="selectedDistrict" name="district" #districtInput="ngModel">
-                        <option *ngFor="let district of districts" [value]=district>
-                            {{district?.viewValue}}
+                        <option *ngFor="let district of districtsCont" [value]=district>
+                            {{district}}
                         </option>
                     </select>
 
                     <label for="street">Utca:</label>
-                    <div *ngIf="selectedDistrict == Empty">
+                    <div *ngIf="districtInput.pristine">
                         <input type="text" disabled="true" placeholder="Kérem előbb válassza ki a városrészt!">
                     </div>
-                    <div *ngIf="selectedDistrict == 'belvaros'">
-                        <select id="street" formControlName="street">
+                    <div *ngIf="districtInput.dirty">
+                        <select id="street" [(ngModel)]="selectedStreet" name="street" #streetInput="ngModel">
                             <option value="">Kérem válasszon!</option>
-                            <option *ngFor="let street of streetsBelvaros" [ngValue]="street.value">
-                                {{street.viewValue}}
-                            </option>
-                        </select>
-                    </div>
-                    <div *ngIf="selectedDistrict == 'kertvaros'">
-                        <select id="street" formControlName="street">
-                            <option value="">Kérem válasszon!</option>
-                            <option *ngFor="let street of streetsKertvaros" [ngValue]="street.value">
-                                {{street.viewValue}}
-                            </option>
-                        </select>
-                    </div>
-                    <div *ngIf="selectedDistrict == 'paterdomb'">
-                        <select id="street" formControlName="street">
-                            <option value="">Kérem válasszon!</option>
-                            <option *ngFor="let street of streetsPaterdomb" [ngValue]="street.value">
-                                {{street.viewValue}}
-                            </option>
-                        </select>
-                    </div>
-                    <div *ngIf="selectedDistrict == 'andrashida'">
-                        <select id="street" formControlName="street">
-                            <option value="">Kérem válasszon!</option>
-                            <option *ngFor="let street of streetsAndrashida" [ngValue]="street.value">
-                                {{street.viewValue}}
+                            <option *ngFor="let street of streetsCont" [value]="street">
+                                {{street}}
                             </option>
                         </select>
                     </div>
 
                     <label for="houseNumber">Házszám:</label>
-                    <input type="text" id="houseNumber" formControlName="houseNumber">
+                    <input type="text" id="houseNumber">
 
                 </div>
             
@@ -112,39 +88,45 @@
                 <h3>Lomhulladék jellege</h3>
                 <div class="col-50">
 
-                    <label class="container containerLom">
-                        <input type="checkbox" fromControlName="lomButor" id="lomButor" value="lomButor">
+                    <label *ngFor="let garbage of garbagesCont" class="container containerLom">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        {{garbage.name}}
+                    </label>
+
+                    <!-- <label class="container containerLom">
+                        <input type="checkbox" id="lomButor" value="lomButor">
                         <span class="checkmark"></span>
                         Bútorok, berendezési tárgyak
                     </label>
 
                     <label class="container containerLom">
-                        <input type="checkbox" fromControlName="lomKertiButor" id="lomKertiButor" value="lomKertiButor">
+                        <input type="checkbox" id="lomKertiButor" value="lomKertiButor">
                         <span class="checkmark"></span>
                         Kerti bútor garnitúra
                     </label>
 
                     <label class="container containerLom">
-                        <input type="checkbox" fromControlName="lomJatek" id="lomJatek" value="lomJatek">
+                        <input type="checkbox" id="lomJatek" value="lomJatek">
                         <span class="checkmark"></span>
                         Nagyobb játék
                     </label>
 
                     <label class="container containerLom">
-                        <input type="checkbox" fromControlName="lomFem" id="lomFem" value="lomFem">
+                        <input type="checkbox" id="lomFem" value="lomFem">
                         <span class="checkmark"></span>
                         Fémek
-                    </label>
+                    </label> -->
                 </div>
                 <div class="col-50">
                     <label for="lomTextArea">Megjegyzés:</label>
-                    <textarea id="lomTextArea" formControlName="lomTextArea"></textarea>
+                    <textarea id="lomTextArea" ></textarea>
                 </div>
             </div>
             <hr>
             <p class="mid">adatvédelmi tájékoztató placeholder</p>
             <label class="container mid">
-                <input type="checkbox" formControlName="GDPR" id="GDPR" value="GDPR">
+                <input type="checkbox" id="GDPR" value="GDPR">
                 <span class="checkmark"></span>
                 Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.
             </label>
