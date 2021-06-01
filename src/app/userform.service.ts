@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from  '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 export interface Request {
   name: string;
   userID: number;
-  disctrict: string;
-  street: string;
-  phone: string;
-  address: string;
-  type: string;
   email: string;
-  text: string;
+  phone: string;
+  disctrict: string; //selectedDistrict ha ide ngModel kell...
+  street: string; //selectedStreet ha...
+  houseNumber: string;
+  garbagesCont: any; //egyenlőre nem tudom ezt hogy fog jönni
+  lomTextArea: string;
 }
 
 export interface Status {
@@ -25,17 +26,17 @@ export interface Status {
 
 export class UserformService {
 
-  private userformUrl = 'api/userform';
+  userformUrl = 'api/requests';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
 
   constructor(
     private http: HttpClient
   ) { }
 
-  addRequest(request: Request): Observable<Status> {
-    return this.http.post<Status>(this.userformUrl, request, this.httpOptions)
+  public addRequest(request: Request): Observable<any> {
+    return this.http.post<any>(this.userformUrl, request)
   }
 }

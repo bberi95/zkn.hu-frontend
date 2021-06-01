@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Request } from '../userform.service';
+import { Request, UserformService } from '../userform.service';
 
 @Component({
   selector: 'app-userform',
@@ -11,14 +11,27 @@ import { Request } from '../userform.service';
 export class UserformComponent implements OnInit {
 
   districtsCont = []
+  selectedStreet : string;
   streetsCont = []
   garbagesCont = []
   sendable = false;
-  request: Request;
+  request: Request = {
+    name: '',
+    userID: null,
+    email: '',
+    phone: '',
+    disctrict: '',
+    street: '', //selectedStreet ha...
+    houseNumber: '',
+    garbagesCont: {}, //egyenlőre nem tudom ezt hogy fog jönni
+    lomTextArea: '',
+  }
   formVisible = false;
+  requests: Request[] = [];
+  editRequest: Request | undefined;
 
-  setFormVisibility(){
-    if (this.formVisible){
+  setFormVisibility() {
+    if (this.formVisible) {
       this.formVisible = false
     } else {
       this.formVisible = true
@@ -29,15 +42,22 @@ export class UserformComponent implements OnInit {
     this.streetService.getStreets(district).subscribe(streets$ => {
       let streets = JSON.parse(streets$)
       this.streetsCont = streets
-
+      this.request.disctrict = district
     }, (err) => {
       console.error(err)
     })
   }
 
+  sendRequest(request: Request): void {
+    this.userformService.addRequest(request).subscribe(requests$ => {
+      this.requests.push(requests$)
+    });
+  }
+
   constructor(
     private streetService: DataService,
-    private garbageService: DataService
+    private garbageService: DataService,
+    private userformService: UserformService
   ) { }
 
   ngOnInit() {
@@ -61,11 +81,15 @@ export class UserformComponent implements OnInit {
 
   onSubmit() {
     let selectedLomCont = [];
-    this.garbagesCont.forEach(function(lom){
+    this.garbagesCont.forEach(function (lom) {
       if (lom.completed) {
         selectedLomCont.push(lom.name)
       }
     });
+    this.request.street = this.selectedStreet
+    this.request.garbagesCont = selectedLomCont
     console.log(selectedLomCont)
+    console.log(this.request)
+    this.sendRequest(this.request)
   }
 }

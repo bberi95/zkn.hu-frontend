@@ -16,9 +16,7 @@
 <div class="mid">
     <p class="mid">A bejelentő felület az alábbiak elfogadása után válik elérhetővé!</p>
     <label class="container">
-        <input type="checkbox"
-            id="acknowledgement"
-            (change)="setFormVisibility()">
+        <input type="checkbox" id="acknowledgement" (change)="setFormVisibility()">
         <span class="checkmark"></span>
         Kijelentem, hogy a tájékoztatóban leírtakat elolvastam és tudomásul vettem.
     </label>
@@ -35,14 +33,8 @@
                     <label for="name" title="NHKV Zrt. által kiállított számlán szereplő név.">
                         Név:
                     </label>
-                    <input type="text" 
-                        id="name" 
-                        [(ngModel)]="name" 
-                        name="name" 
-                        required 
-                        pattern="[a-zA-Z-. áéíóöőúüűÁÉÍÓÖŐÚÜŰäÄ]{1,}"
-                        placeholder="Minta Marci" 
-                        #nameInput="ngModel">
+                    <input type="text" id="name" [(ngModel)]="request.name" name="name" required
+                        pattern="[a-zA-Z-. áéíóöőúüűÁÉÍÓÖŐÚÜŰäÄ]{1,}" placeholder="Minta Marci" #nameInput="ngModel">
 
                     <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán 
                         szereplő 7 számjegyből álló felhasználói azonosító szám."></i>
@@ -50,32 +42,33 @@
                         álló felhasználói azonosító szám.">
                         Ügyfélkód:
                     </label>
-                    <input type="number" id="userID" [(ngModel)]="userID" name="userID" required pattern="[0-9]{6,7}"
-                        placeholder="1234567" #userIDInput="ngModel">
+                    <input type="number" id="userID" [(ngModel)]="request.userID" name="userID" required
+                        pattern="[0-9]{6,7}" placeholder="1234567" #userIDInput="ngModel">
 
                     <label for="email">
                         E-mail cím:
                     </label>
-                    <input type="email" id="email" [(ngModel)]="email" name="email" required
+                    <input type="email" id="email" [(ngModel)]="request.email" name="email" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="minta@zkn.hu"
                         #emailInput="ngModel">
 
                     <label for="phone">
                         Telefonszám:
                     </label>
-                    <input type="phone" id="phone" [(ngModel)]="phone" name="phone" required placeholder="+3692/900-036"
-                        #phoneInput="ngModel">
+                    <input type="phone" id="phone" [(ngModel)]="request.phone" name="phone" required
+                        placeholder="+3692/900-036" #phoneInput="ngModel">
                 </div>
                 <div class="col-50">
                     <label for="district">Városrész:</label>
-                    <select id="district" [(ngModel)]="selectedDistrict" name="district" required #districtInput="ngModel">
+                    <select id="district" [(ngModel)]="selectedDistrict" name="district" required
+                        #districtInput="ngModel">
                         <option *ngFor="let district of districtsCont" [value]=district>
                             {{district}}
                         </option>
                     </select>
 
                     <label for="street">Utca:</label>
-                    <div *ngIf="districtInput.pristine">
+                    <!-- <div *ngIf="districtInput.pristine">
                         <input type="text" disabled="true" placeholder="Kérem előbb válassza ki a városrészt!">
                     </div>
                     <div *ngIf="districtInput.dirty">
@@ -85,12 +78,19 @@
                                 {{street}}
                             </option>
                         </select>
-                    </div>
+                    </div> -->
+
+                    <select [disabled]="districtInput.pristine" id="street" [(ngModel)]="selectedStreet" name="street" required #streetInput="ngModel">
+                        <option *ngFor="let street of streetsCont" [value]="street">
+                            {{street}}
+                        </option>
+                    </select>
 
                     <label for="houseNumber">
                         Házszám:
                     </label>
-                    <input type="text" id="houseNumber" [(ngModel)]="houseNumber" name="houseNumber" required #houseNumberInput="ngModel">
+                    <input type="text" id="houseNumber" [(ngModel)]="request.houseNumber" name="houseNumber" required
+                        #houseNumberInput="ngModel">
 
                 </div>
 
@@ -101,10 +101,7 @@
                 <div class="col-50">
 
                     <label *ngFor="let garbage of garbagesCont" class="container containerLom">
-                        <input type="checkbox" 
-                            name="checkbox-list" 
-                            [(ngModel)]="garbage.completed"
-                            (change)="updateLom()">
+                        <input type="checkbox" name="checkbox-list" [(ngModel)]="garbage.completed">
                         <span class="checkmark"></span>
                         {{garbage.name}}
                     </label>
@@ -112,26 +109,25 @@
                 </div>
                 <div class="col-50">
                     <label for="lomTextArea">Megjegyzés:</label>
-                    <textarea id="lomTextArea"></textarea>
+                    <textarea id="lomTextArea" name="lomTextArea" [(ngModel)]="request.lomTextArea"></textarea>
                 </div>
             </div>
             <hr>
-            <p class="mid">adatvédelmi tájékoztató placeholder</p>
+            <p class="mid">adatvédelmi tájékoztató link placeholder</p>
             <label class="container mid">
-                <input type="checkbox" id="GDPR" value="GDPR">
+                <input type="checkbox" id="GDPR" [(ngModel)]="GDPR" name="GDPR" required #GDPRInput="ngModel">
                 <span class="checkmark"></span>
                 Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.
             </label>
             <p class="mid">recaptcha placeholder</p>
-            <button type="submit" 
-                [disabled]="nameInput.invalid 
+            <button type="submit" [disabled]="nameInput.invalid 
                     || userIDInput.invalid 
                     || emailInput.invalid 
                     || phoneInput.invalid
                     || districtInput.invalid
                     || streetInput.invalid
-                    || houseNumberInput.invalid" 
-                id="sendBtn">
+                    || houseNumberInput.invalid
+                    || GDPRInput.invalid" id="sendBtn">
                 Beküldés
             </button>
             <p class="mid error" id="errorTxt"></p>
