@@ -5,43 +5,53 @@
 <div>
     <h1 class="mid">Tájékoztató szöveg a lomtalanításról</h1>
     <p class="information">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
 </div>
 
-<form>
-    <div class="mid">
-        <p class="mid">A bejelentő felület az alábbiak elfogadása után válik elérhetővé!</p>
-        <label class="container">
-            <input type="checkbox" id="acknowledgement">
-            <span class="checkmark"></span>
-            Kijelentem, hogy a tájékoztatóban leírtakat elolvastam és tudomásul vettem.
-        </label>
-    </div>
-</form>
+<div class="mid">
+    <p class="mid">A bejelentő felület az alábbiak elfogadása után válik elérhetővé!</p>
+    <label class="container">
+        <input type="checkbox"
+            id="acknowledgement"
+            (change)="setFormVisibility()">
+        <span class="checkmark"></span>
+        Kijelentem, hogy a tájékoztatóban leírtakat elolvastam és tudomásul vettem.
+    </label>
+</div>
 
-<div class="row">
+<div *ngIf="formVisible" class="row">
     <div class="containerYoink">
         <form (ngSubmit)="onSubmit()">
             <div class="row">
                 <h3>Ügyfél adatai</h3>
-                
+
                 <div class="col-50">
                     <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán szereplő név."></i>
                     <label for="name" title="NHKV Zrt. által kiállított számlán szereplő név.">
                         Név:
                     </label>
-                    <input type="text" id="name" [(ngModel)]="name" name="name"
-                        required pattern="[A-Za-z.-]{1,}" placeholder="Minta Marci" #nameInput="ngModel">
-                    
+                    <input type="text" 
+                        id="name" 
+                        [(ngModel)]="name" 
+                        name="name" 
+                        required 
+                        pattern="[a-zA-Z-. áéíóöőúüűÁÉÍÓÖŐÚÜŰäÄ]{1,}"
+                        placeholder="Minta Marci" 
+                        #nameInput="ngModel">
+
                     <i class="fa fa-info-circle infoIcon" title="NHKV Zrt. által kiállított számlán 
                         szereplő 7 számjegyből álló felhasználói azonosító szám."></i>
                     <label for="userID" title="NHKV Zrt. által kiállított számlán szereplő 7 számjegyből 
                         álló felhasználói azonosító szám.">
                         Ügyfélkód:
                     </label>
-                    <input type="number" id="userID" [(ngModel)]="userID" name="userID"
-                        required pattern="[0-9]{6,7}" placeholder="1234567" #userIDInput="ngModel">
+                    <input type="number" id="userID" [(ngModel)]="userID" name="userID" required pattern="[0-9]{6,7}"
+                        placeholder="1234567" #userIDInput="ngModel">
 
                     <label for="email">
                         E-mail cím:
@@ -53,12 +63,12 @@
                     <label for="phone">
                         Telefonszám:
                     </label>
-                    <input type="phone" id="phone" [(ngModel)]="phone" name="phone"
-                        required placeholder="+3692/900-036" #phoneInput="ngModel">
+                    <input type="phone" id="phone" [(ngModel)]="phone" name="phone" required placeholder="+3692/900-036"
+                        #phoneInput="ngModel">
                 </div>
                 <div class="col-50">
                     <label for="district">Városrész:</label>
-                    <select id="district" [(ngModel)]="selectedDistrict" name="district" #districtInput="ngModel">
+                    <select id="district" [(ngModel)]="selectedDistrict" name="district" required #districtInput="ngModel">
                         <option *ngFor="let district of districtsCont" [value]=district>
                             {{district}}
                         </option>
@@ -69,7 +79,7 @@
                         <input type="text" disabled="true" placeholder="Kérem előbb válassza ki a városrészt!">
                     </div>
                     <div *ngIf="districtInput.dirty">
-                        <select id="street" [(ngModel)]="selectedStreet" name="street" #streetInput="ngModel">
+                        <select id="street" [(ngModel)]="selectedStreet" name="street" required #streetInput="ngModel">
                             <option value="">Kérem válasszon!</option>
                             <option *ngFor="let street of streetsCont" [value]="street">
                                 {{street}}
@@ -77,11 +87,13 @@
                         </select>
                     </div>
 
-                    <label for="houseNumber">Házszám:</label>
-                    <input type="text" id="houseNumber">
+                    <label for="houseNumber">
+                        Házszám:
+                    </label>
+                    <input type="text" id="houseNumber" [(ngModel)]="houseNumber" name="houseNumber" required #houseNumberInput="ngModel">
 
                 </div>
-            
+
             </div>
             <hr>
             <div class="row">
@@ -89,38 +101,18 @@
                 <div class="col-50">
 
                     <label *ngFor="let garbage of garbagesCont" class="container containerLom">
-                        <input type="checkbox">
+                        <input type="checkbox" 
+                            name="checkbox-list" 
+                            [(ngModel)]="garbage.completed"
+                            (change)="updateLom()">
                         <span class="checkmark"></span>
                         {{garbage.name}}
                     </label>
 
-                    <!-- <label class="container containerLom">
-                        <input type="checkbox" id="lomButor" value="lomButor">
-                        <span class="checkmark"></span>
-                        Bútorok, berendezési tárgyak
-                    </label>
-
-                    <label class="container containerLom">
-                        <input type="checkbox" id="lomKertiButor" value="lomKertiButor">
-                        <span class="checkmark"></span>
-                        Kerti bútor garnitúra
-                    </label>
-
-                    <label class="container containerLom">
-                        <input type="checkbox" id="lomJatek" value="lomJatek">
-                        <span class="checkmark"></span>
-                        Nagyobb játék
-                    </label>
-
-                    <label class="container containerLom">
-                        <input type="checkbox" id="lomFem" value="lomFem">
-                        <span class="checkmark"></span>
-                        Fémek
-                    </label> -->
                 </div>
                 <div class="col-50">
                     <label for="lomTextArea">Megjegyzés:</label>
-                    <textarea id="lomTextArea" ></textarea>
+                    <textarea id="lomTextArea"></textarea>
                 </div>
             </div>
             <hr>
@@ -131,7 +123,17 @@
                 Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.
             </label>
             <p class="mid">recaptcha placeholder</p>
-            <button type="submit" [disabled]="!sendable" id="sendBtn">Beküldés</button>
+            <button type="submit" 
+                [disabled]="nameInput.invalid 
+                    || userIDInput.invalid 
+                    || emailInput.invalid 
+                    || phoneInput.invalid
+                    || districtInput.invalid
+                    || streetInput.invalid
+                    || houseNumberInput.invalid" 
+                id="sendBtn">
+                Beküldés
+            </button>
             <p class="mid error" id="errorTxt"></p>
         </form>
     </div>

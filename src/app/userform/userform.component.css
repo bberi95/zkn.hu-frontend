@@ -40,6 +40,9 @@ input.ng-invalid.ng-touched {
 .error{
   color: red;
 }
+select.ng-invalid.ng-touched {
+  border-color: red;
+}
 
 textarea{
   resize: none;

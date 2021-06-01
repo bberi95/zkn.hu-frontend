@@ -15,12 +15,20 @@ export class UserformComponent implements OnInit {
   garbagesCont = []
   sendable = false;
   request: Request;
+  formVisible = false;
 
-  @Input() set selectedDistrict(district: string){
+  setFormVisibility(){
+    if (this.formVisible){
+      this.formVisible = false
+    } else {
+      this.formVisible = true
+    }
+  }
+
+  @Input() set selectedDistrict(district: string) {
     this.streetService.getStreets(district).subscribe(streets$ => {
       let streets = JSON.parse(streets$)
       this.streetsCont = streets
-      console.log(this.streetsCont)
 
     }, (err) => {
       console.error(err)
@@ -37,7 +45,6 @@ export class UserformComponent implements OnInit {
     this.streetService.getAreas().subscribe(streets$ => {
       let districts = JSON.parse(streets$)
       this.districtsCont = districts
-      console.log(this.districtsCont)
     }, (err) => {
       console.error(err)
     })
@@ -46,10 +53,19 @@ export class UserformComponent implements OnInit {
     this.garbageService.getGarbages().subscribe(garbages$ => {
       let garbages = JSON.parse(garbages$)
       this.garbagesCont = garbages
-      console.log(this.garbagesCont)
     }, (err) => {
       console.error(err)
     })
 
+  }
+
+  onSubmit() {
+    let selectedLomCont = [];
+    this.garbagesCont.forEach(function(lom){
+      if (lom.completed) {
+        selectedLomCont.push(lom.name)
+      }
+    });
+    console.log(selectedLomCont)
   }
 }
