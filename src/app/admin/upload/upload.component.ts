@@ -8,7 +8,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 
 export class UploadComponent implements OnInit {
 
-    edited = 'menu-intro'
+    edited = 'menu-userform'
 
     menuitems = [
         {
@@ -38,6 +38,10 @@ export class UploadComponent implements OnInit {
         {
             id: 'menu-education',
             label: 'Környezeti nevelés'
+        },
+        {
+            id: 'menu-userform',
+            label: 'Bejelentő felület'
         },
         {
             id: 'menu-media',

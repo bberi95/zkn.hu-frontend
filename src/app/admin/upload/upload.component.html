@@ -1,4 +1,6 @@
 <div id="nav">
+    <img src="assets/image/logo.svg" alt="logo">
+    <p>Szerkesztés mód</p>
     <a *ngFor="let item of menuitems" id="item.id" (click)="toggle(item.id)" [ngClass]="{active: item.active}">{{item.label}}</a>
 </div>
 
@@ -12,5 +14,8 @@
 
     <app-edit-selective *ngIf="edited === 'menu-selective'">
     </app-edit-selective>
+
+    <app-edit-userform *ngIf="edited === 'menu-userform'">
+    </app-edit-userform>
 
 </div>

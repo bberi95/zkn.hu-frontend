@@ -68,18 +68,6 @@
                     </select>
 
                     <label for="street">Utca:</label>
-                    <!-- <div *ngIf="districtInput.pristine">
-                        <input type="text" disabled="true" placeholder="Kérem előbb válassza ki a városrészt!">
-                    </div>
-                    <div *ngIf="districtInput.dirty">
-                        <select id="street" [(ngModel)]="selectedStreet" name="street" required #streetInput="ngModel">
-                            <option value="">Kérem válasszon!</option>
-                            <option *ngFor="let street of streetsCont" [value]="street">
-                                {{street}}
-                            </option>
-                        </select>
-                    </div> -->
-
                     <select [disabled]="districtInput.pristine" id="street" [(ngModel)]="selectedStreet" name="street" required #streetInput="ngModel">
                         <option *ngFor="let street of streetsCont" [value]="street">
                             {{street}}
@@ -91,6 +79,9 @@
                     </label>
                     <input type="text" id="houseNumber" [(ngModel)]="request.houseNumber" name="houseNumber" required
                         #houseNumberInput="ngModel">
+
+                    <label for="retrievalTime">Lomtalanítás ideje:</label>
+                    <input type="text" id="retrievalTime" disabled="true" [(ngModel)]="retrievalTime" name="retrievalTime">
 
                 </div>
 
@@ -120,7 +111,8 @@
                 Egyetértek az adatvédelmi irányelvekkel amely a fenti linken olvasható.
             </label>
             <p class="mid">recaptcha placeholder</p>
-            <button type="submit" [disabled]="nameInput.invalid 
+            <!-- ideiglenesen kivettem, hogy minden inputot kérjen -->
+            <!-- <button type="submit" [disabled]="nameInput.invalid 
                     || userIDInput.invalid 
                     || emailInput.invalid 
                     || phoneInput.invalid
@@ -128,6 +120,10 @@
                     || streetInput.invalid
                     || houseNumberInput.invalid
                     || GDPRInput.invalid" id="sendBtn">
+                Beküldés
+            </button> -->
+            
+            <button type="submit" [disabled]="nameInput.invalid" id="sendBtn">
                 Beküldés
             </button>
             <p class="mid error" id="errorTxt"></p>

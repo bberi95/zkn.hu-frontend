@@ -15,6 +15,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { EditSelectiveComponent } from './edit-selective/edit-selective.component';
 import { EditIntroComponent } from './edit-intro/edit-intro.component';
+import { EditUserformComponent } from './edit-userform/edit-userform.component';
 
 
 
@@ -24,7 +25,8 @@ import { EditIntroComponent } from './edit-intro/edit-intro.component';
     DialogComponent,
     EditNewsComponent,
     EditSelectiveComponent,
-    EditIntroComponent
+    EditIntroComponent,
+    EditUserformComponent
   ],
   imports: [
     CommonModule,

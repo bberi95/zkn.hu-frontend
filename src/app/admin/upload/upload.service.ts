@@ -3,6 +3,8 @@ import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/c
 import { Subject, Observable } from 'rxjs';
 
 export interface Intro {
+  id: number,
+  title: string,
   text: string,
   sign: string,
   rank: string

@@ -8,10 +8,10 @@ export interface Request {
   userID: number;
   email: string;
   phone: string;
-  disctrict: string; //selectedDistrict ha ide ngModel kell...
-  street: string; //selectedStreet ha...
+  disctrict: string;
+  street: string;
   houseNumber: string;
-  garbagesCont: any; //egyenlőre nem tudom ezt hogy fog jönni
+  garbagesCont: any;
   lomTextArea: string;
 }
 

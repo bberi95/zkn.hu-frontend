@@ -10,25 +10,27 @@ import { Request, UserformService } from '../userform.service';
 
 export class UserformComponent implements OnInit {
 
-  districtsCont = []
   selectedStreet : string;
+  retrievalTime = 'placeholder text until database input';
+  //adatbázisban kell a districtnek dátum hozzáadás
+  districtsCont = []
   streetsCont = []
   garbagesCont = []
   sendable = false;
+  formVisible = false;
   request: Request = {
     name: '',
     userID: null,
     email: '',
     phone: '',
     disctrict: '',
-    street: '', //selectedStreet ha...
+    street: '',
     houseNumber: '',
-    garbagesCont: {}, //egyenlőre nem tudom ezt hogy fog jönni
+    garbagesCont: {},
     lomTextArea: '',
   }
-  formVisible = false;
-  requests: Request[] = [];
-  editRequest: Request | undefined;
+  // requests: Request[] = [];
+  // editRequest: Request | undefined;
 
   setFormVisibility() {
     if (this.formVisible) {
@@ -50,7 +52,7 @@ export class UserformComponent implements OnInit {
 
   sendRequest(request: Request): void {
     this.userformService.addRequest(request).subscribe(requests$ => {
-      this.requests.push(requests$)
+      console.log(requests$)
     });
   }
 
@@ -86,6 +88,10 @@ export class UserformComponent implements OnInit {
         selectedLomCont.push(lom.name)
       }
     });
+    if (selectedLomCont.length === 0) {
+      console.log('lomCont is empty!')
+      return
+    }
     this.request.street = this.selectedStreet
     this.request.garbagesCont = selectedLomCont
     console.log(selectedLomCont)
