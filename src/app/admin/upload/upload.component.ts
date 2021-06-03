@@ -13,77 +13,95 @@ export class UploadComponent implements OnInit {
     menuitems = [
         {
             id: 'menu-intro',
-            label: 'Bemutatkozás',            
+            label: 'Bemutatkozás',
+            active: false,     
         },
         {
             id: 'menu-news',
-            label: 'Hírek'
+            label: 'Hírek',
+            active: false,
         },
         {
             id: 'menu-industrial',
-            label: 'Gazdálkodói gyűjtés'
+            label: 'Gazdálkodói gyűjtés',
+            active: false,
         },
         {
             id: 'menu-domestic',
-            label: 'Lakossági gyűjtés'
+            label: 'Lakossági gyűjtés',
+            active: false,
         },
         {
             id: 'menu-selective',
-            label: 'Szelektív gyűjtés'
+            label: 'Szelektív gyűjtés',
+            active: false,
         },
         {
             id: 'menu-junkyard',
-            label: 'Hulladékudvar'
+            label: 'Hulladékudvar',
+            active: false,
         },
         {
             id: 'menu-education',
-            label: 'Környezeti nevelés'
+            label: 'Környezeti nevelés',
+            active: false,
         },
         {
             id: 'menu-userform',
-            label: 'Bejelentő felület'
+            label: 'Bejelentő felület',
+            active: true,
         },
         {
             id: 'menu-media',
-            label: 'Médiamegjelenés'
+            label: 'Médiamegjelenés',
+            active: false,
         },
         {
             id: 'menu-contact',
-            label: 'Kapcsolat'
+            label: 'Kapcsolat',
+            active: false,
         },
         {
             id: 'menu-career',
-            label: 'Karrier'
+            label: 'Karrier',
+            active: false,
         },
         {
             id: 'menu-pub-data',
-            label: 'Közédekű'
+            label: 'Közédekű',
+            active: false,
         },
         {
             id: 'menu-customers',
-            label: 'Ügyfélszolgálat'
+            label: 'Ügyfélszolgálat',
+            active: false,
         },
         {
             id: 'menu-legislation',
-            label: 'Jogszabályok'
+            label: 'Jogszabályok',
+            active: false,
         },
         {
             id: 'menu-authorities',
-            label: 'Felügyeleti szervek'
+            label: 'Felügyeleti szervek',
+            active: false,
         },
         {
             id: 'menu-permits',
-            label: 'Engedélyek'
+            label: 'Engedélyek',
+            active: false,
         }
     ]
 
     constructor(private renderer: Renderer2) { }
 
-    toggle(id) {
-        this.edited = id
+    toggle(item) {
+        this.menuitems.forEach(function(items) {
+            items.active = false;
+        });
+        this.edited = item.id;
+        item.active = true;
     }
-
-    
 
     ngOnInit() {
         

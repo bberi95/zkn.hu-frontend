@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="container">
+        <form (ngSubmit)="updateIntro()">
+            <div class="row">
+
+                <div class="col-50">
+                    <label for="title">Cím:</label>
+                    <input type="text" id="title" required [(ngModel)]="title" name="title" #titleInput="ngModel">
+
+                </div>
+
+                <div class="col-50">
+                    <label for="modDate">Utolsó módosítás ideje:</label>
+                    <input type="text" id="modDate" disabled [ngModel]="date | date:'yyyy.MM.dd HH:mm:ss'" name="modDate" #modDateInput="ngModel">
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-50">
+                    <label for="text">A lomtalanítási tájékoztató szövege:</label>
+                    <textarea class="textarea" required [(ngModel)]="text" minlength="20" name="text"
+                        #textInput="ngModel"></textarea>
+                </div>
+            </div>
+
+            <div class="row" id="sending">
+                <div class="col-50">
+                    <label for="sign">Aláírás:</label>
+                    <input type="text" id="sign" required [(ngModel)]="sign" name="sign" #signInput="ngModel">
+
+                    <label for="rank">Beosztás:</label>
+                    <input type="text" id="rank" required [(ngModel)]="rank" name="rank" #rankInput="ngModel">
+                </div>
+                <div class="col-50">
+                    <label for="pubDate">Közzététel dátuma:</label>
+                    <input type="text" id="pubDate" disabled [(ngModel)]="pubDate" name="pubDate" #pubDateInput="ngModel">
+                    <button>Módosítás</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

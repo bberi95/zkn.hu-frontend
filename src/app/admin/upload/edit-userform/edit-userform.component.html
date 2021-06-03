@@ -1,46 +1,16 @@
-<h2 class="mid">Bejelentő felület szerkesztése</h2>
 
-<div class="row">
-    <div class="container">
-        <form (ngSubmit)="updateIntro()">
-            <div class="row">
+<div class="header">
+    <h2>Bejelentő felület szerkesztése</h2>
+</div>
+<div class="header">
+    <a *ngFor="let item of subMenuItems" id="{{item.id}}" (click)="toggle(item)" 
+    [ngClass]="{'active': item.active}">{{item.label}}</a>
+</div>
 
-                <div class="col-50">
-                    <label for="title">Cím:</label>
-                    <input type="text" id="title" required [(ngModel)]="title" name="title" #titleInput="ngModel">
+<div>
+    <app-edit-userform-label *ngIf="editedSub === 'edit-userform-label'">
+    </app-edit-userform-label>
 
-                </div>
-
-                <div class="col-50">
-                    <label for="modDate">Utolsó módosítás ideje:</label>
-                    <input type="text" id="modDate" disabled [ngModel]="date | date:'yyyy.MM.dd HH:mm:ss'" name="modDate" #modDateInput="ngModel">
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-50">
-                    <label for="text">A lomtalanítási tájékoztató szövege:</label>
-                    <textarea class="textarea" required [(ngModel)]="text" minlength="20" name="text"
-                        #textInput="ngModel"></textarea>
-                </div>
-            </div>
-
-            <div class="row" id="sending">
-                <div class="col-50">
-                    <label for="sign">Aláírás:</label>
-                    <input type="text" id="sign" required [(ngModel)]="sign" name="sign" #signInput="ngModel">
-
-                    <label for="rank">Beosztás:</label>
-                    <input type="text" id="rank" required [(ngModel)]="rank" name="rank" #rankInput="ngModel">
-                </div>
-                <div class="col-50">
-                    <label for="pubDate">Közzététel dátuma:</label>
-                    <input type="text" id="pubDate" required [(ngModel)]="pubDate" name="pubDate" #pubDateInput="ngModel">
-                    <button>Módosítás</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
+    <app-edit-userform-records *ngIf="editedSub === 'edit-userform-records'">
+    </app-edit-userform-records>
 </div>

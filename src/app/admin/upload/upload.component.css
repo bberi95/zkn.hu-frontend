@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    background-color: #f1f1f1;
 }
 
 #nav {
@@ -20,6 +21,7 @@ a {
     color: black;
     cursor: pointer;
     border-bottom: 1px solid #ccc;
+    border-left: 5px solid #f1f1f1;
 }
 
 p {
@@ -33,10 +35,12 @@ p {
 a.active {
     color:#00983A;
     background-color: white;
+    border-left: 5px solid #00983A;
 }
 
 a:hover {
     background-color:#ccc;
+    border-left: 5px solid;
 }
 
 #edit {

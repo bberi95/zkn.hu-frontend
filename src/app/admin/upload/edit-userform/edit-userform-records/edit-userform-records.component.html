@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th><input type="checkbox"></th>
+        <th>Név</th>
+        <th>Beküldés</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Városrész</th>
+        <th>Cím</th>
+        <th>További adatok</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let item of requestsCont">
+        <td><input type="checkbox"></td>
+        <td>{{item.name}}</td>
+        <td>{{item.date | date:'yyyy.MM.dd HH:mm:ss'}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.district}}</td>
+        <td>{{item.street}} {{item.houseNumber}}</td>
+        <td><a (click)="show(item)">Részletek megtekintése</a></td>
+        <td><a (click)="delete(item)"><fa-icon [icon]="wtf"></fa-icon></a></td>
+    </tr>
+</table>

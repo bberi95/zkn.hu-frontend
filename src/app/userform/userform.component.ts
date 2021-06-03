@@ -23,7 +23,7 @@ export class UserformComponent implements OnInit {
     userID: null,
     email: '',
     phone: '',
-    disctrict: '',
+    district: '',
     street: '',
     houseNumber: '',
     garbagesCont: {},
@@ -44,7 +44,7 @@ export class UserformComponent implements OnInit {
     this.streetService.getStreets(district).subscribe(streets$ => {
       let streets = JSON.parse(streets$)
       this.streetsCont = streets
-      this.request.disctrict = district
+      this.request.district = district
     }, (err) => {
       console.error(err)
     })

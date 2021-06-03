@@ -8,7 +8,7 @@ export interface Request {
   userID: number;
   email: string;
   phone: string;
-  disctrict: string;
+  district: string;
   street: string;
   houseNumber: string;
   garbagesCont: any;

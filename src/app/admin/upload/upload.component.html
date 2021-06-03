@@ -1,7 +1,8 @@
 <div id="nav">
     <img src="assets/image/logo.svg" alt="logo">
     <p>Szerkesztés mód</p>
-    <a *ngFor="let item of menuitems" id="item.id" (click)="toggle(item.id)" [ngClass]="{active: item.active}">{{item.label}}</a>
+    <a *ngFor="let item of menuitems" id="{{item.id}}" (click)="toggle(item)" 
+    [ngClass]="{'active': item.active}">{{item.label}}</a>
 </div>
 
 <div id="edit">

@@ -73,6 +73,10 @@ export class DataService {
     return this.http.get<any>('/api/garbages');
   }
 
+  public getRequests(): Observable<any> {
+    return this.http.get<any>('/api/requests');
+  }
+
 
   /*  public updateAct(act: any): Observable<any> {
       return this.http.post<any>('api/updateact', act);

@@ -1,95 +1,40 @@
-  
-  .mid {
-    text-align: center;
-  }
-  
-  input.ng-invalid.ng-touched {
-    border-color: red;
-  }
+h2 {
+  margin-top: 0;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+}
 
-  select.ng-invalid.ng-touched {
-    border-color: red;
-  }
+.header {
+  background-color:white;
+  display:flex;
+  justify-content:stretch;
+}
+
+a {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  border-top: 5px solid white;
+  width: 100%;
+  text-align: center;
+}
+
+a.active {
+  color:#00983A;
+  background-color: #f1f1f1;
+  border-top: 5px solid #00983A;
+}
+
+a:hover {
+  background-color:#ccc;
+  border-top: 5px solid;
+}
   
-  textarea{
-    resize: none;
-    min-height: 300px;
-  }
-  
-  button:disabled {
-    background-color: lightcoral;
-  }
-  
-  button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 11px;
-    margin: 30px 0;
-    border: none;
-    width: 100%;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  
-  /* Neten talált form css szabályai... */
-  .row {
-    display: -ms-flexbox; /* IE10 */
-    display: flex;
-    -ms-flex-wrap: wrap; /* IE10 */
-    flex-wrap: wrap;
-    margin: 0 -16px;
-  }
-    
-  .col-50 {
-    -ms-flex: 50%; /* IE10 */
-    flex: 50%;
-    padding: 0 16px;
-  }
-    
-  .container {
-    background-color: #f2f2f2;
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
-    padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
-    border-radius: 3px;
-  }
-  
-  /* number inputnál eltünteti a fel le nyilakat - kivétel mozilla */
-  input::-webkit-inner-spin-button,
-  input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin:0;
-  }
-  
-  /* number inputnál eltünteti a fel le nyilakat - mozilla */
-  input[type="number"] {
-    -moz-appearance: textfield;
-  }
-  
-  input[type=text],
-  input[type=email],
-  input[type=phone],
-  input[type=number],
-  textarea {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  label {
-    margin-bottom: 10px;
-    font-weight: normal;
-    display: block;
-  }
-    
-  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-  @media (max-width: 800px) {
-    .row {
-      flex-direction: column; /*column-reverse volt eredetileg */
-    }
-  }
+app-edit-userform-label, app-edit-userform-records {
+  width: 100%;
+  height: 100%;
+}
