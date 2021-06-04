@@ -18,7 +18,7 @@
         <td>{{item.phone}}</td>
         <td>{{item.district}}</td>
         <td>{{item.street}} {{item.houseNumber}}</td>
-        <td><a (click)="show(item)">Részletek megtekintése</a></td>
-        <td><a (click)="delete(item)"><fa-icon [icon]="wtf"></fa-icon></a></td>
+        <td><a (click)="openDialog(item)">Részletek megjelenítése</a></td>
+        <td><a (click)="updateRequest(item)"><fa-icon [icon]="wtf"></fa-icon></a></td>
     </tr>
 </table>

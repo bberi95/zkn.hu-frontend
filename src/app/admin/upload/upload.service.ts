@@ -27,6 +27,10 @@ export class UploadService {
     return this.http.post<Status>('api/updateintro', intro);
   }
 
+  public updateRequest(item: Request): Observable<Status> {
+    return this.http.post<Status>('api/updaterequest', item);
+  }
+
   public getData(data, url) {
     this.senddata = data
     this.url = url

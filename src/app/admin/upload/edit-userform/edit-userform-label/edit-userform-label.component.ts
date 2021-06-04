@@ -15,7 +15,6 @@ export class EditUserformLabelComponent implements OnInit {
   date: Date
   sign: string
   rank: string
-  pubdate ='2020.01.01'
 
   saving = false
   saved: boolean

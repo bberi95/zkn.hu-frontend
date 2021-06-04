@@ -62,6 +62,7 @@ export class ActivitiesComponent implements OnInit {
 
   openDialog(i, j) {
     const data = this.menuItems[i].subcomponents[j]
+    console.log(data)
     let options: any
     let comp: any
 
@@ -98,7 +99,10 @@ export class ActivitiesComponent implements OnInit {
     this.renderer.addClass(document.body, 'scrolloff')
   }
 
-  constructor(public dialog: MatDialog, private ActivitiesService: DataService, private renderer: Renderer2) {
+  constructor(
+    public dialog: MatDialog, 
+    private ActivitiesService: DataService, 
+    private renderer: Renderer2) {
 
   }
 

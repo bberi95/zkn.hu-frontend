@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     /* justify-content: space-evenly; */
-    background-color: #f1f1f1;
+    background-color: white;
     border-right: 1px solid #ccc;
 }
 
@@ -20,8 +20,9 @@ a {
     text-decoration: none;
     color: black;
     cursor: pointer;
+    background-color: white;
     border-bottom: 1px solid #ccc;
-    border-left: 5px solid #f1f1f1;
+    border-left: 5px solid white;
 }
 
 p {
@@ -34,13 +35,13 @@ p {
 
 a.active {
     color:#00983A;
-    background-color: white;
+    background-color: #f1f1f1;
     border-left: 5px solid #00983A;
 }
 
 a:hover {
     background-color:#ccc;
-    border-left: 5px solid;
+    border-left: 5px solid #ccc;
 }
 
 #edit {

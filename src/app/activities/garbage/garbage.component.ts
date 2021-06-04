@@ -12,7 +12,11 @@ export class GarbageComponent implements OnInit {
   text: string
   pic: string
 
-  constructor(public dialogRef: MatDialogRef<GarbageComponent>, private renderer: Renderer2, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    public dialogRef: MatDialogRef<GarbageComponent>, 
+    private renderer: Renderer2, 
+    @Inject(MAT_DIALOG_DATA) 
+    public data: any) { }
 
   closeDialog() {
     this.dialogRef.close()

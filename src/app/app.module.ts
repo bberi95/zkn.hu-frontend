@@ -82,6 +82,9 @@ import { UserformComponent } from './userform/userform.component';
     NgxPaginationModule,
     FontAwesomeModule,
   ],
+  entryComponents: [
+    GarbageComponent
+  ],
   providers: [
     ResultService,
     DataService

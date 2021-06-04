@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UploadService } from './upload.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { UploadComponent } from './upload.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -19,6 +19,7 @@ import { EditIntroComponent } from './edit-intro/edit-intro.component';
 import { EditUserformComponent } from './edit-userform/edit-userform.component';
 import { EditUserformLabelComponent } from './edit-userform/edit-userform-label/edit-userform-label.component';
 import { EditUserformRecordsComponent } from './edit-userform/edit-userform-records/edit-userform-records.component';
+import { RequestDialogComponent } from './edit-userform/request-dialog/request-dialog.component';
 
 
 
@@ -31,7 +32,8 @@ import { EditUserformRecordsComponent } from './edit-userform/edit-userform-reco
     EditIntroComponent,
     EditUserformComponent,
     EditUserformLabelComponent,
-    EditUserformRecordsComponent
+    EditUserformRecordsComponent,
+    RequestDialogComponent
   ],
   imports: [
     CommonModule,
@@ -46,10 +48,11 @@ import { EditUserformRecordsComponent } from './edit-userform/edit-userform-reco
     FontAwesomeModule,
   ],
   exports: [
-    UploadComponent
+    UploadComponent,
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    RequestDialogComponent
   ],
   providers: [
     UploadService

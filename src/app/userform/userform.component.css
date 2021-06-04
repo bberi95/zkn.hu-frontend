@@ -34,14 +34,20 @@ hr {
   width: 100%
 }
 
+input {
+  text-decoration: none;
+}
+
 input.ng-invalid.ng-touched {
-  border-color: red;
+  background-color: rgb(240, 169, 169);
+  /* border-color: red; */
 }
 .error{
   color: red;
 }
 select.ng-invalid.ng-touched {
-  border-color: red;
+  background-color: rgb(240, 169, 169);
+  /* border-color: red; */
 }
 
 textarea{
@@ -49,7 +55,7 @@ textarea{
 }
 
 button:disabled {
-  background-color: lightcoral;
+  background-color: rgb(240, 169, 169);
 }
 
 button {

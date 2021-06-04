@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { UploadService } from '../../upload.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RequestDialogComponent } from '../request-dialog/request-dialog.component';
 
 @Component({
   selector: 'app-edit-userform-records',
@@ -9,27 +12,53 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class EditUserformRecordsComponent implements OnInit {
+
   wtf = faTrashAlt;
   requestsCont = []
 
   constructor(
     private requestService: DataService,
+    public uploadService: UploadService,
+    public dialog: MatDialog,
   ) { }
 
-  show(item) {
-    console.log(item.name)
+  openDialog(item) {
+    console.log(item)
+    const data = item
+    let options: any
+    let comp: any
+    options = {
+      id: 'requestDialog',
+      panelClass: 'overl',
+      maxWidth: '1400px',
+      width: '100vw',
+      height: '100vh',
+      data: {
+        name: data.name,
+        userID: data.userID,
+        email: data.email,
+        phone: data.phone
+      }
+    }
+    comp = RequestDialogComponent
+    const dialogRef = this.dialog.open(comp as any, options)
   }
-  delete(item) {
-    console.log('törölni akarod: ' + item.id)
+
+  public updateRequest(item) {
+    item.deleted = true;
+    this.uploadService.updateRequest(item).subscribe(res => {
+    })
+    this.ngOnInit()
   }
 
   ngOnInit() {
-    this.requestService.getRequests().subscribe(requests$ =>{
+    this.requestsCont = []
+    this.requestService.getRequests().subscribe(requests$ => {
       let requests = JSON.parse(requests$)
       for (var i = 0; i < requests.length; i++) {
         this.requestsCont.push(requests[i])
       }
-    }, (err) =>{
+    }, (err) => {
       console.error(err)
     })
   }

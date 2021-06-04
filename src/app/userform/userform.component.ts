@@ -20,6 +20,7 @@ export class UserformComponent implements OnInit {
   formVisible = false;
   request: Request = {
     name: '',
+    deleted: false,
     userID: null,
     email: '',
     phone: '',

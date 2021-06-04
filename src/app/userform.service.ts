@@ -5,6 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 
 export interface Request {
   name: string;
+  deleted: boolean;
   userID: number;
   email: string;
   phone: string;
