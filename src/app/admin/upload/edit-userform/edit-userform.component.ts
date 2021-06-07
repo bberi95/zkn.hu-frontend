@@ -19,6 +19,11 @@ export class EditUserformComponent implements OnInit {
       id: 'edit-userform-records',
       label: 'Beküldött lomtalanítási igények',
       active: false,
+    },
+    {
+      id: 'edit-district-dates',
+      label: 'Szállítási időpontok módosítása',
+      active: false,
     }
   ]
 

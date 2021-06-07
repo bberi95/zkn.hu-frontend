@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Street } from './calendar/calendar.component';
 
 export interface News {
   title: String,
@@ -76,6 +77,21 @@ export class DataService {
   public getRequests(): Observable<any> {
     return this.http.get<any>('/api/requests');
   }
+
+  //temp
+  public getStreetDates(): Observable<any> {
+    return this.http.get<any>('api/street-dates');
+  }
+  public updateStreetDates(district: Street): Observable<any> {
+    // let payload = {
+    //   district
+    // }
+    return this.http.post<any>('api/update-street-dates', district);
+  }
+
+  public getAreasWithDates(): Observable<any> {
+    return this.http.get<any>('/api/lom-dates');
+  }  
 
 
   /*  public updateAct(act: any): Observable<any> {

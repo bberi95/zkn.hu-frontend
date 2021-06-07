@@ -1,0 +1,12 @@
+
+<table>
+    <tr>
+        <th>Városrész neve</th>
+        <th>Lomtalanítás dátuma</th>
+    </tr>
+    <tr *ngFor="let district of testCont">
+        <td>{{district.area}}</td>
+        <!-- <td>{{district.lomDate | date:'yyyy.MM.dd'}}</td> -->
+        <td class="input"><input type="date" id="date" [(ngModel)]="district.lomDate" name="date" (change)="districtChange(district)"></td>
+    </tr>
+</table>

@@ -13,7 +13,7 @@ import { RequestDialogComponent } from '../request-dialog/request-dialog.compone
 
 export class EditUserformRecordsComponent implements OnInit {
 
-  wtf = faTrashAlt;
+  trashcan = faTrashAlt;
   requestsCont = []
 
   constructor(
@@ -23,7 +23,6 @@ export class EditUserformRecordsComponent implements OnInit {
   ) { }
 
   openDialog(item) {
-    console.log(item)
     const data = item
     let options: any
     let comp: any

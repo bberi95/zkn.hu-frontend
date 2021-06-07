@@ -10,9 +10,14 @@ import { Request, UserformService } from '../userform.service';
 
 export class UserformComponent implements OnInit {
 
+  title: string
+  text: string
+  date: Date
+  sign: string
+  rank: string
+
   selectedStreet : string;
   retrievalTime = 'placeholder text until database input';
-  //adatbázisban kell a districtnek dátum hozzáadás
   districtsCont = []
   streetsCont = []
   garbagesCont = []
@@ -30,8 +35,6 @@ export class UserformComponent implements OnInit {
     garbagesCont: {},
     lomTextArea: '',
   }
-  // requests: Request[] = [];
-  // editRequest: Request | undefined;
 
   setFormVisibility() {
     if (this.formVisible) {
@@ -60,10 +63,11 @@ export class UserformComponent implements OnInit {
   constructor(
     private streetService: DataService,
     private garbageService: DataService,
-    private userformService: UserformService
+    private userformService: UserformService,
+    private introService: DataService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.districtsCont = []
     this.streetService.getAreas().subscribe(streets$ => {
       let districts = JSON.parse(streets$)
@@ -77,6 +81,18 @@ export class UserformComponent implements OnInit {
       let garbages = JSON.parse(garbages$)
       this.garbagesCont = garbages
     }, (err) => {
+      console.error(err)
+    })
+
+    this.introService.getIntro().subscribe(intro$ => {
+      const intro = JSON.parse(intro$)
+      this.title = intro[1].title
+      this.text = intro[1].text
+      this.date = intro[1].date
+      this.sign = intro[1].sign
+      this.rank = intro[1].rank
+      console.log(intro)
+    }, (err) =>{
       console.error(err)
     })
 
