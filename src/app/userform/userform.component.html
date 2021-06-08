@@ -106,7 +106,7 @@
             </label>
             <p class="mid">recaptcha placeholder</p>
             <!-- ideiglenesen kivettem, hogy minden inputot kérjen -->
-            <!-- <button type="submit" [disabled]="nameInput.invalid 
+            <button type="submit" [disabled]="nameInput.invalid 
                     || userIDInput.invalid 
                     || emailInput.invalid 
                     || phoneInput.invalid
@@ -115,11 +115,11 @@
                     || houseNumberInput.invalid
                     || GDPRInput.invalid" id="sendBtn">
                 Beküldés
-            </button> -->
-            
-            <button type="submit" [disabled]="nameInput.invalid" id="sendBtn">
-                Beküldés
             </button>
+            
+            <!-- <button type="submit" [disabled]="nameInput.invalid" id="sendBtn">
+                Beküldés
+            </button> -->
             <p class="mid error" id="errorTxt"></p>
         </form>
     </div>

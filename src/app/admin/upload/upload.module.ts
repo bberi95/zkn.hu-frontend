@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { UploadComponent } from './upload.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -52,6 +53,7 @@ import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/
     FontAwesomeModule,
     MatFormFieldModule,
     MatInputModule,
+    NgxPaginationModule,
   ],
   exports: [
     UploadComponent,

@@ -36,6 +36,10 @@ export class UserformComponent implements OnInit {
     lomTextArea: '',
   }
 
+  saving = false
+  saved: boolean
+  message: string
+
   setFormVisibility() {
     if (this.formVisible) {
       this.formVisible = false
@@ -55,8 +59,16 @@ export class UserformComponent implements OnInit {
   }
 
   sendRequest(request: Request): void {
-    this.userformService.addRequest(request).subscribe(requests$ => {
-      console.log(requests$)
+    this.userformService.addRequest(request).subscribe(res => {
+      this.saving = true
+      if (res.saved) {
+        this.saved = true
+        this.message = 'Sikeres mentés'
+      } else {
+        this.saved = false
+        this.message = 'A mentés sikertelen'
+      }
+      console.log(this.message)
     });
   }
 
@@ -91,7 +103,6 @@ export class UserformComponent implements OnInit {
       this.date = intro[1].date
       this.sign = intro[1].sign
       this.rank = intro[1].rank
-      console.log(intro)
     }, (err) =>{
       console.error(err)
     })
@@ -106,13 +117,10 @@ export class UserformComponent implements OnInit {
       }
     });
     if (selectedLomCont.length === 0) {
-      console.log('lomCont is empty!')
       return
     }
     this.request.street = this.selectedStreet
     this.request.garbagesCont = selectedLomCont
-    console.log(selectedLomCont)
-    console.log(this.request)
     this.sendRequest(this.request)
   }
 }

@@ -1,15 +1,50 @@
 <div>
-    <p id="name" [innerHTML]="name"></p>
-    <p id="userID" [innerHTML]="userID"></p>
-    <p id="email" [innerHTML]="email"></p>
-    <p id="phone" [innerHTML]="phone"></p>
-    <a id="close" (click)="closeDialog()">Bezárás</a>
+    <h2>Bejelentés részletes adatai:</h2>
+    <table>
+        <tr>
+            <th>Bejelentés kódja:</th>
+            <td id="id" [innerHTML]="id"></td>
+        </tr>
+        <tr>
+            <th>Bejelentés időpontja:</th>
+            <td id="date" [innerHTML]="date | date:'yyyy.MM.dd HH:mm:ss'"></td>
+        </tr>
+        <tr>
+            <th>Ügyfél neve:</th>
+            <td id="name" [innerHTML]="name"></td>
+        </tr>
+        <tr>
+            <th>Ügyfélkód:</th>
+            <td id="userID" [innerHTML]="userID"></td>
+        </tr>
+        <tr>
+            <th>E-mail cím:</th>
+            <td id="email" [innerHTML]="email"></td>
+        </tr>
+        <tr>
+            <th>Telefonszám:</th>
+            <td id="phone" [innerHTML]="phone"></td>
+        </tr>
+        <tr>
+            <th>Városrész:</th>
+            <td id="district" [innerHTML]="district"></td>
+        </tr>
+        <tr>
+            <th>Utca:</th>
+            <td id="street" [innerHTML]="street"></td>
+        </tr>
+        <tr>
+            <th>Házszám:</th>
+            <td id="houseNumber" [innerHTML]="houseNumber"></td>
+        </tr>
+        <tr>
+            <th>Hulladéktípusok:</th>
+            <td id="garbagesCont"></td>
+        </tr>
+        <tr>
+            <th>Megjegyzés:</th>
+            <td id="lomTextArea" [innerHTML]="lomTextArea"></td>
+        </tr>
+    </table>
+    <button id="close" (click)="closeDialog()">Bezárás</button>
 </div>
-
-<h2>Bejelentés részletes adatai:</h2>
-<table>
-    <tr>
-        <th>Ügyfél neve:</th>
-        <td id="name" [innerHtml]="name"></td>
-    </tr>
-</table>

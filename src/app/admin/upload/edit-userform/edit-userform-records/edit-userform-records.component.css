@@ -1,6 +1,8 @@
 table {
     margin: 5%;
     border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 th, td {
@@ -18,7 +20,26 @@ a {
     color:#00983A;
 }
 
+.delete {
+    margin-right: 10px;
+}
+
 fa-icon {
     font-size: 2rem;
     cursor:pointer;
+}
+
+.custom-pagination /deep/ .ngx-pagination .current {
+    background: #00983A;
+}
+
+label {
+    font-weight: normal;
+    margin-left: 5%;
+    margin-right: 10px;
+}
+
+div {
+    margin-left: 5%;
+    margin-top: 20px;
 }

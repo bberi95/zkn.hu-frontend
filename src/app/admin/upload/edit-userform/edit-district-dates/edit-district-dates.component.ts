@@ -10,6 +10,8 @@ export class EditDistrictDatesComponent implements OnInit {
 
   districtsCont = []
   testCont = []
+  rowsPerPage = 15
+  rowsPerPageCont = [5, 10, 15, 20, 25]
 
   area: string;
   lomDate: Date;

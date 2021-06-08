@@ -1,6 +1,15 @@
+<div>
+    <a class="delete" (click)="updateMultiple()"><fa-icon class="delete" [icon]="trashcan"></fa-icon>Kijelöltek törlése</a>
+    <select>
+        <option>Szűrés városrészre</option>
+        <option>Belváros</option>
+        <option>Andráshida</option>
+    </select>
+</div>
+
 <table>
     <tr>
-        <th><input type="checkbox"></th>
+        <th><input type="checkbox" [(ngModel)]="header.completed" [checked]="allComplete" (change)="setAll($event.checked)"></th>
         <th>Név</th>
         <th>Beküldés</th>
         <th>Email</th>
@@ -10,8 +19,8 @@
         <th>További adatok</th>
         <th></th>
     </tr>
-    <tr *ngFor="let item of requestsCont">
-        <td><input type="checkbox"></td>
+    <tr *ngFor="let item of requestsCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
+        <td><input type="checkbox" [(ngModel)]="item.completed" (ngModelChange)="updateAllComplete()"></td>
         <td>{{item.name}}</td>
         <td>{{item.date | date:'yyyy.MM.dd HH:mm:ss'}}</td>
         <td>{{item.email}}</td>
@@ -22,3 +31,9 @@
         <td><a (click)="updateRequest(item)"><fa-icon [icon]="trashcan"></fa-icon></a></td>
     </tr>
 </table>
+<pagination-controls class="custom-pagination" (pageChange)="p = $event; selectReset()" autoHide="true" responsive="true" previousLabel="Előző" nextLabel="Következő">
+</pagination-controls>
+<label for="rowsPerPage">Sorok száma oldalanként:</label>
+<select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage" (change)="p = 1; updateAllComplete()">
+    <option *ngFor="let item of rowsPerPageCont">{{item}}</option>
+</select>

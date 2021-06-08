@@ -16,3 +16,13 @@ th, td {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.custom-pagination /deep/ .ngx-pagination .current {
+    background: #00983A;
+}
+
+label {
+    font-weight: normal;
+    margin-left: 5%;
+    margin-right: 10px;
+}

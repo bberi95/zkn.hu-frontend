@@ -4,9 +4,17 @@
         <th>Városrész neve</th>
         <th>Lomtalanítás dátuma</th>
     </tr>
-    <tr *ngFor="let district of testCont">
+    <tr *ngFor="let district of testCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
         <td>{{district.area}}</td>
         <!-- <td>{{district.lomDate | date:'yyyy.MM.dd'}}</td> -->
         <td class="input"><input type="date" id="date" [(ngModel)]="district.lomDate" name="date" (change)="districtChange(district)"></td>
     </tr>
 </table>
+
+<pagination-controls class="custom-pagination" (pageChange)="p = $event" autoHide="true" responsive="true" previousLabel="Előző" nextLabel="Következő">
+</pagination-controls>
+
+<label for="rowsPerPage">Sorok száma oldalanként:</label>
+<select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage">
+    <option *ngFor="let item of rowsPerPageCont">{{item}}</option>
+</select>
