@@ -24,6 +24,11 @@ export class EditUserformComponent implements OnInit {
       id: 'edit-district-dates',
       label: 'Szállítási időpontok módosítása',
       active: false,
+    },
+    {
+      id: 'edit-userform-garbages',
+      label: 'Lomhulladékok',
+      active: false,
     }
   ]
 

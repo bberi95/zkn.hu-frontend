@@ -16,8 +16,8 @@ export class UserformComponent implements OnInit {
   sign: string
   rank: string
 
-  selectedStreet : string;
-  retrievalTime = 'placeholder text until database input';
+  selectedStreet: string;
+  retrievalTime = 'Kérem, előbb válasszon városrészt!';
   districtsCont = []
   streetsCont = []
   garbagesCont = []
@@ -40,15 +40,14 @@ export class UserformComponent implements OnInit {
   saved: boolean
   message: string
 
-  setFormVisibility() {
-    if (this.formVisible) {
-      this.formVisible = false
-    } else {
-      this.formVisible = true
-    }
-  }
-
   @Input() set selectedDistrict(district: string) {
+    let areas = this.districtsCont.reduce((a,s) =>{
+      a.push(s.area)
+      return a
+    }, [])
+    let i = areas.indexOf(district)
+    this.retrievalTime = this.districtsCont[i].lomDate
+    this.retrievalTime = this.retrievalTime.replace(/\-/g, ".")
     this.streetService.getStreets(district).subscribe(streets$ => {
       let streets = JSON.parse(streets$)
       this.streetsCont = streets
@@ -81,7 +80,7 @@ export class UserformComponent implements OnInit {
 
   ngOnInit(): void {
     this.districtsCont = []
-    this.streetService.getAreas().subscribe(streets$ => {
+    this.streetService.getAreasWithDates().subscribe(streets$ => {
       let districts = JSON.parse(streets$)
       this.districtsCont = districts
     }, (err) => {
@@ -89,7 +88,7 @@ export class UserformComponent implements OnInit {
     })
 
     this.garbagesCont = []
-    this.garbageService.getGarbages().subscribe(garbages$ => {
+    this.garbageService.getActiveGarbages().subscribe(garbages$ => {
       let garbages = JSON.parse(garbages$)
       this.garbagesCont = garbages
     }, (err) => {
@@ -103,7 +102,7 @@ export class UserformComponent implements OnInit {
       this.date = intro[1].date
       this.sign = intro[1].sign
       this.rank = intro[1].rank
-    }, (err) =>{
+    }, (err) => {
       console.error(err)
     })
 

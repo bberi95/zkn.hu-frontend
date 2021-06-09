@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { UploadComponent } from './upload.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -24,6 +25,7 @@ import { EditUserformLabelComponent } from './edit-userform/edit-userform-label/
 import { EditUserformRecordsComponent } from './edit-userform/edit-userform-records/edit-userform-records.component';
 import { RequestDialogComponent } from './edit-userform/request-dialog/request-dialog.component';
 import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/edit-district-dates.component';
+import { EditUserformGarbagesComponent } from './edit-userform/edit-userform-garbages/edit-userform-garbages.component';
 
 
 
@@ -38,7 +40,8 @@ import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/
     EditUserformLabelComponent,
     EditUserformRecordsComponent,
     RequestDialogComponent,
-    EditDistrictDatesComponent
+    EditDistrictDatesComponent,
+    EditUserformGarbagesComponent
   ],
   imports: [
     CommonModule,
@@ -54,6 +57,7 @@ import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/
     MatFormFieldModule,
     MatInputModule,
     NgxPaginationModule,
+    MatSlideToggleModule,
   ],
   exports: [
     UploadComponent,

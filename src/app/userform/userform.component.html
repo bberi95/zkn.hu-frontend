@@ -10,13 +10,13 @@
 <div class="mid">
     <p class="mid">A bejelentő felület az alábbiak elfogadása után válik elérhetővé!</p>
     <label class="container">
-        <input type="checkbox" id="acknowledgement" (change)="setFormVisibility()">
+        <input type="checkbox" id="acknowledgement" [(ngModel)]="acknowledgement" name="acknowledgement" required>
         <span class="checkmark"></span>
         Kijelentem, hogy a tájékoztatóban leírtakat elolvastam és tudomásul vettem.
     </label>
 </div>
 
-<div *ngIf="formVisible" class="row">
+<div *ngIf="acknowledgement" class="row">
     <div class="containerYoink">
         <form (ngSubmit)="onSubmit()">
             <div class="row">
@@ -56,8 +56,8 @@
                     <label for="district">Városrész:</label>
                     <select id="district" [(ngModel)]="selectedDistrict" name="district" required
                         #districtInput="ngModel">
-                        <option *ngFor="let district of districtsCont" [value]=district>
-                            {{district}}
+                        <option *ngFor="let district of districtsCont" [value]=district.area>
+                            {{district.area}}
                         </option>
                     </select>
 

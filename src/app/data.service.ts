@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Street } from './calendar/calendar.component';
+import { Garbage } from './admin/upload/edit-userform/edit-userform-garbages/edit-userform-garbages.component';
 
 export interface News {
   title: String,
@@ -43,9 +44,9 @@ export class DataService {
     return this.http.get<any>('/api/island');
   }
 
-  public getGarbage(): Observable<any> {
-    return this.http.get<any>('/api/garbage');
-  }
+  // public getGarbage(): Observable<any> {
+  //   return this.http.get<any>('/api/garbage');
+  // }
 
   public getCalZegSingle(): Observable<any> {
     return this.http.get<any>('/api/cal-zeg-single');
@@ -74,24 +75,33 @@ export class DataService {
     return this.http.get<any>('/api/garbages');
   }
 
+  public getActiveGarbages(): Observable<any>{
+    return this.http.get<any>('/api/active-garbages');
+  }
+
   public getRequests(): Observable<any> {
     return this.http.get<any>('/api/requests');
   }
 
-  //temp
   public getStreetDates(): Observable<any> {
     return this.http.get<any>('api/street-dates');
   }
+
   public updateStreetDates(district: Street): Observable<any> {
-    // let payload = {
-    //   district
-    // }
     return this.http.post<any>('api/update-street-dates', district);
   }
 
   public getAreasWithDates(): Observable<any> {
     return this.http.get<any>('/api/lom-dates');
   }  
+
+  public updateGarbage(garbage: Garbage): Observable<any>{
+    return this.http.post<any>('api/update-garbage', garbage)
+  }
+
+  public addGarbage(garbage: Garbage): Observable<any>{
+    return this.http.post<any>('api/add-garbage', garbage)
+  }
 
 
   /*  public updateAct(act: any): Observable<any> {

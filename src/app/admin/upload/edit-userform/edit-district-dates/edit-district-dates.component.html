@@ -4,7 +4,7 @@
         <th>Városrész neve</th>
         <th>Lomtalanítás dátuma</th>
     </tr>
-    <tr *ngFor="let district of testCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
+    <tr *ngFor="let district of districtsCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
         <td>{{district.area}}</td>
         <!-- <td>{{district.lomDate | date:'yyyy.MM.dd'}}</td> -->
         <td class="input"><input type="date" id="date" [(ngModel)]="district.lomDate" name="date" (change)="districtChange(district)"></td>

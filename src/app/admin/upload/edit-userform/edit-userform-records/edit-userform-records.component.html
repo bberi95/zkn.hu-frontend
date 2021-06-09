@@ -1,15 +1,22 @@
 <div>
-    <a class="delete" (click)="updateMultiple()"><fa-icon class="delete" [icon]="trashcan"></fa-icon>Kijelöltek törlése</a>
-    <select>
-        <option>Szűrés városrészre</option>
-        <option>Belváros</option>
-        <option>Andráshida</option>
+    <a class="delete" (click)="updateMultiple()">
+        <fa-icon class="delete" [icon]="trashcan"></fa-icon>Kijelöltek törlése
+    </a>
+    <label for="district">Szűrés városrészekre:</label>
+    <select id="district" [(ngModel)]="selectedDistrict" name="district" required #districtInput="ngModel">
+        <option>
+            Minden városrész
+        </option>
+        <option *ngFor="let district of districtsCont" [value]=district.area>
+            {{district.area}}
+        </option>
     </select>
 </div>
 
 <table>
     <tr>
-        <th><input type="checkbox" [(ngModel)]="header.completed" [checked]="allComplete" (change)="setAll($event.checked)"></th>
+        <th><input type="checkbox" [(ngModel)]="header.completed" [checked]="allComplete"
+                (change)="setAll($event.checked)"></th>
         <th>Név</th>
         <th>Beküldés</th>
         <th>Email</th>
@@ -27,11 +34,20 @@
         <td>{{item.phone}}</td>
         <td>{{item.district}}</td>
         <td>{{item.street}} {{item.houseNumber}}</td>
-        <td><a (click)="openDialog(item)">Részletek megjelenítése</a></td>
-        <td><a (click)="updateRequest(item)"><fa-icon [icon]="trashcan"></fa-icon></a></td>
+        <td>
+            <a (click)="openDialog(item)">
+                Részletek megjelenítése
+            </a>
+        </td>
+        <td>
+            <a (click)="updateRequest(item)">
+                <fa-icon [icon]="trashcan"></fa-icon>
+            </a>
+        </td>
     </tr>
 </table>
-<pagination-controls class="custom-pagination" (pageChange)="p = $event; selectReset()" autoHide="true" responsive="true" previousLabel="Előző" nextLabel="Következő">
+<pagination-controls class="custom-pagination" (pageChange)="p = $event; selectReset()" autoHide="true"
+    responsive="true" previousLabel="Előző" nextLabel="Következő">
 </pagination-controls>
 <label for="rowsPerPage">Sorok száma oldalanként:</label>
 <select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage" (change)="p = 1; updateAllComplete()">
