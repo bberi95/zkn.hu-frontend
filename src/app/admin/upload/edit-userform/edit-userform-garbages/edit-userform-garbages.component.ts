@@ -38,6 +38,18 @@ export class EditUserformGarbagesComponent implements OnInit {
 
   deleteGarbage(garbage: Garbage): void {
     //ide kell egy tényleges törlés
+    this.garbageService.deleteGarbage(garbage).subscribe(res =>{
+      this.saving = true
+      if (res.saved) {
+        this.saved = true
+        this.message = 'Sikeres törlés'
+      } else {
+        this.saved = false
+        this.message = 'A törlés sikertelen'
+      }
+      console.log(this.message)
+    })
+    this.ngOnInit()
   }
 
   sendGarbage(garbage: Garbage): void {
@@ -84,6 +96,7 @@ export class EditUserformGarbagesComponent implements OnInit {
 
   onSubmit() {
     this.sendGarbage(this.garbage)
+    this.garbage.name=''
   }
 
 }

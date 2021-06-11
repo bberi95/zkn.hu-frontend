@@ -1,23 +1,49 @@
 
-<form (ngSubmit)="onSubmit()">
+<!-- <form (ngSubmit)="onSubmit()">
+    <h2>Hulladéktípus hozzáadása</h2>
     <label for="name">Hulladék neve:</label>
     <input type="text" id="name" [(ngModel)]="garbage.name" name="name" required #nameInput="ngModel">
     <button type="submit" [disabled]="nameInput.invalid" id="sendBtn">Hozzáadás</button>
+</form> -->
+
+<form (ngSubmit)="onSubmit()">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Hulladéktípus hozzáadása</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hulladék neve:</td>
+                <td>
+                    <input type="text" id="name" [(ngModel)]="garbage.name" name="name" required #nameInput="ngModel">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit" [disabled]="nameInput.invalid" id="sendBtn">Hozzáadás</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>
 
 <table>
     <thead>
-        <tr>
-            <th>Aktív</th>
-            <th>Lomhulladék megnevezése</th>
-            <th>Törlés</th>
+        <tr class="garbages">
+            <th class="garbages">Aktív</th>
+            <th class="garbages">Lomhulladék megnevezése</th>
+            <th class="garbages">Törlés</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of garbagesCont">
-            <td><mat-slide-toggle [(ngModel)]="item.active" (change)="activityChange(item)"></mat-slide-toggle></td>
-            <td>{{item.name}}</td>
-            <td class="mid">
+        <tr *ngFor="let item of garbagesCont" class="garbages">
+            <td class="garbages">
+                <mat-slide-toggle [(ngModel)]="item.active" (change)="activityChange(item)"></mat-slide-toggle>
+            </td>
+            <td class="garbages">{{item.name}}</td>
+            <td class="mid garbages">
                 <a (click)="deleteGarbage(item)">
                     <fa-icon [icon]="trashcan"></fa-icon>
                 </a>

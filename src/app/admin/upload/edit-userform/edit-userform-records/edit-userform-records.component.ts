@@ -19,7 +19,7 @@ export class EditUserformRecordsComponent implements OnInit {
   allRequestCont = []
   districtsCont = []
   visible: boolean
-  rowsPerPage = 5
+  rowsPerPage: number = 10
   rowsPerPageCont = [5, 10, 15, 20, 25]
   p = 1;
 
@@ -119,7 +119,7 @@ export class EditUserformRecordsComponent implements OnInit {
     this.setAll()
   }
 
-  public updateRequest(item) {
+   public updateRequest(item) {
     item.deleted = true;
     this.uploadService.updateRequest(item).subscribe(res => {
       this.saving = true
@@ -178,7 +178,7 @@ export class EditUserformRecordsComponent implements OnInit {
       for (var i = 0; i < requests.length; i++) {
         requests.completed = false;
         this.requestsCont.push(requests[i])
-      }
+      }      
     }, (err) => {
       console.error(err)
     })

@@ -103,6 +103,10 @@ export class DataService {
     return this.http.post<any>('api/add-garbage', garbage)
   }
 
+  public deleteGarbage(garbage: Garbage): Observable<any>{
+    return this.http.post<any>('api/delete-garbage', garbage)
+  }
+
 
   /*  public updateAct(act: any): Observable<any> {
       return this.http.post<any>('api/updateact', act);
