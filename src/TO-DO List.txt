@@ -1,0 +1,21 @@
+Az admin felületen a hírek részt átdolgozni:
+    - A már meglevő hírek a bejelentett lomtalanítási igényekhez hasonló módon jelenlenek meg listában.
+    - Legyen külön fül, vagy valami az új hírek létrehozására.
+    - A listában a cikk nevére kattintva nyíljon meg szerkesztésre a cikk.
+    - Ha nagyon sok türelmem van lehetne 2-3 hír elrendezési designt előre definiálni, és lehessen
+      kiválasztani, hogy melyiket akarjuk használni adott hírhez.
+    - Cikk archiválási lehetőség.
+    - Adott cikk szerkesztésénél, mentés, mentés és bezárás, bezárás mentés nélkül
+
+Hírek:
+    - Valahány hír (elsőre mondjuk 10 után) legyen pagination
+    - A hírek megjelenése valamilyen egységes formában történjen (kép méret, elhelyezkedés, cím + 1 mondat leírás,
+      majd cikkre kattintás után jelenjen meg a teljes.
+    - Több kép megjelenítése a cikken belül, lehetne galéria / slider szerűen.
+
+Általános:
+    - White / Dark mode összehozása felhasználó által választhatóra. Ha erre sikerül 2 különálló style
+      megalkotni, akkor ebből kiindulva lehetne majd olyan őrültségeket csinálni mint a méhecskés projekt a régin.
+      Esetleg az ilyen projektekhez lehetne valami szerkesztő felület az admin oldalon, ahol meg lehet adni különböző
+      képeket a megfelelő háttereknek, gomboknak stb?
+    - Kéne csinálni baromi sok képet a cégről
