@@ -1,5 +1,9 @@
 Az admin felületen a hírek részt átdolgozni:
     - A már meglevő hírek a bejelentett lomtalanítási igényekhez hasonló módon jelenlenek meg listában.
+    - A listában legyen egy oszlop amiben a közzététel állapotát lehet egy olyan csúszkával állítani, mint
+      a lombejelentőnél a hulladékok aktív rész.
+    - Listában a fejlécekre kattintva módosuljon a sorrend adott oszlop tartalma alapján.
+    - Idővel rengeteg cikk lesz, kelleni fog egy kereső amiben lehet név részlettel keresni.
     - Legyen külön fül, vagy valami az új hírek létrehozására.
     - A listában a cikk nevére kattintva nyíljon meg szerkesztésre a cikk.
     - Ha nagyon sok türelmem van lehetne 2-3 hír elrendezési designt előre definiálni, és lehessen
@@ -19,3 +23,8 @@ Hírek:
       Esetleg az ilyen projektekhez lehetne valami szerkesztő felület az admin oldalon, ahol meg lehet adni különböző
       képeket a megfelelő háttereknek, gomboknak stb?
     - Kéne csinálni baromi sok képet a cégről
+
+Adatbázis:
+    - Valami admin cucc amivel kb úgy lehessen szerkeszteni az adatbázist, mint az nlsoft program technikaiban.
+      Lehessen benne új "oszlopot" tulajdonságot adni az objektumnak, csoportosan módosítani meg mittudomén.
+      Ne kelljen mindig scriptet írni ha tömegesen módosítani akarok valamit.

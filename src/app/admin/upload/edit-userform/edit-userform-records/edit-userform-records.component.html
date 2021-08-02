@@ -50,6 +50,6 @@
     responsive="true" previousLabel="Előző" nextLabel="Következő">
 </pagination-controls>
 <label for="rowsPerPage">Sorok száma oldalanként:</label>
-<select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage" (change)="p = 1; updateAllComplete()">
+<select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage" (change)="p = 1; updateAllComplete(); selectReset()">
     <option *ngFor="let item of rowsPerPageCont">{{item}}</option>
 </select>

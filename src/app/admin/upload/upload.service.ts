@@ -15,6 +15,17 @@ export interface Status {
   message: any
 }
 
+export interface News {
+  id: string,
+  title: string,
+  date: Date,
+  text: string,
+  sign: string,
+  rank: string,
+  pics: [],
+  active: boolean
+}
+
 @Injectable()
 export class UploadService {
 
@@ -30,6 +41,10 @@ export class UploadService {
   public updateRequest(item: Request): Observable<Status> {
     return this.http.post<Status>('api/updaterequest', item);
   }
+
+  // public updateNews(item: News): Observable<Status> {
+  //   return this.http.post<Status>('api/update-news', item);
+  // }
 
   public getData(data, url) {
     this.senddata = data

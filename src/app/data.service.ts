@@ -28,6 +28,18 @@ export class DataService {
     return this.http.get<any>('/api/news');
   }
 
+  public getActiveNews(): Observable<any>{
+    return this.http.get<any>('/api/active-news');
+  }
+
+  public updateNews(news: News): Observable<any>{
+    return this.http.post<any>('api/update-news', news)
+  }
+
+  public deleteNews(news: News): Observable<any>{
+    return this.http.post<any>('api/delete-news', news)
+  }
+
   public getArchives(): Observable<any> {
     return this.http.get<any>('/api/archives');
   }

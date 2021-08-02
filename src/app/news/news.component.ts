@@ -31,7 +31,7 @@ export class NewsComponent implements OnInit {
   constructor(private NewsService: DataService) { }
 
   ngOnInit() {
-    this.NewsService.getNews().subscribe(news$ => {
+    this.NewsService.getActiveNews().subscribe(news$ =>{
       let news = JSON.parse(news$)
       for (var i = 0; i < news.length; i++) {
         this.newsCont.push(news[i])
@@ -39,6 +39,14 @@ export class NewsComponent implements OnInit {
     }, (err) => {
       console.error(err)
     })
+    // this.NewsService.getNews().subscribe(news$ => {
+    //   let news = JSON.parse(news$)
+    //   for (var i = 0; i < news.length; i++) {
+    //     this.newsCont.push(news[i])
+    //   }
+    // }, (err) => {
+    //   console.error(err)
+    // })
   }
 
 }

@@ -26,6 +26,8 @@ import { EditUserformRecordsComponent } from './edit-userform/edit-userform-reco
 import { RequestDialogComponent } from './edit-userform/request-dialog/request-dialog.component';
 import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/edit-district-dates.component';
 import { EditUserformGarbagesComponent } from './edit-userform/edit-userform-garbages/edit-userform-garbages.component';
+import { EditNewsAllNewsComponent } from './edit-news/edit-news-all-news/edit-news-all-news.component';
+import { CreateNewsComponent } from './edit-news/create-news/create-news.component';
 
 
 
@@ -41,7 +43,9 @@ import { EditUserformGarbagesComponent } from './edit-userform/edit-userform-gar
     EditUserformRecordsComponent,
     RequestDialogComponent,
     EditDistrictDatesComponent,
-    EditUserformGarbagesComponent
+    EditUserformGarbagesComponent,
+    EditNewsAllNewsComponent,
+    CreateNewsComponent,
   ],
   imports: [
     CommonModule,
