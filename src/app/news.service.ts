@@ -3,11 +3,14 @@ import { HttpClient } from  '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface News {
+  id: string,
   title: String,
+  date: Date,
   text: String,
   sign: String,
   rank: String,
-  picCount: number
+  picCount: number,
+  active: boolean,
 }
 
 @Injectable({

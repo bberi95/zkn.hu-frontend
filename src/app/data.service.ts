@@ -5,11 +5,14 @@ import { Street } from './calendar/calendar.component';
 import { Garbage } from './admin/upload/edit-userform/edit-userform-garbages/edit-userform-garbages.component';
 
 export interface News {
+  id: string,
   title: String,
+  date: Date,
   text: String,
   sign: String,
   rank: String,
-  picCount: number
+  picCount: number,
+  active: boolean,
 }
 
 @Injectable({
@@ -34,6 +37,10 @@ export class DataService {
 
   public updateNews(news: News): Observable<any>{
     return this.http.post<any>('api/update-news', news)
+  }
+
+  public updateNewsActivity(news: News): Observable<any>{
+    return this.http.post<any>('api/update-news-activity', news)
   }
 
   public deleteNews(news: News): Observable<any>{

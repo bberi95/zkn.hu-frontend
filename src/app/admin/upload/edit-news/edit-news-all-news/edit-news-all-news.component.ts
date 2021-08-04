@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { UploadService } from '../../upload.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditNewsDialogComponent } from '../edit-news-dialog/edit-news-dialog.component';
 
 @Component({
   selector: 'app-edit-news-all-news',
@@ -11,7 +12,6 @@ import { UploadService } from '../../upload.service';
 export class EditNewsAllNewsComponent implements OnInit {
 
   newsCont = []
-  allNewsCont = []
   trashcan = faTrashAlt;
   rowsPerPage: number = 10
   rowsPerPageCont = [5, 10, 15, 20, 25]
@@ -27,8 +27,41 @@ export class EditNewsAllNewsComponent implements OnInit {
   }
 
   constructor(
-    private newsService: DataService
+    private newsService: DataService,
+    public dialog: MatDialog,
   ) { }
+
+  openDialog(item) {
+    const data = item
+    let options: any
+    let comp: any
+    options = {
+      id: 'newsDialog',
+      panelClass: 'overl',
+      maxWidth: '1400px',
+      width: '100vw',
+      height: '100vh',
+      data: {
+        id: data.id,
+        title: data.title,
+        date: data.date,
+        text: data.text,
+        sign: data.sign,
+        rank: data.rank,
+        picCount: data.picCount,
+        active: data.active,
+      }
+    }
+    comp = EditNewsDialogComponent
+    // this.dialog.afterAllClosed.subscribe(something => {
+    //   this.newsCont = []
+    //   this.ngOnInit()
+    // })
+    const dialogRef = this.dialog.open(comp as any, options)
+    dialogRef.afterClosed().subscribe(something =>
+      this.ngOnInit()
+    )
+  }
 
   updateAllComplete() {
     let counter = 0
@@ -83,7 +116,7 @@ export class EditNewsAllNewsComponent implements OnInit {
   }
 
   activityChange(news) {
-    this.newsService.updateNews(news).subscribe(res => {
+    this.newsService.updateNewsActivity(news).subscribe(res => {
       this.saving = true
       if (res.saved) {
         this.saved = true
@@ -132,9 +165,11 @@ export class EditNewsAllNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("oninit")
     this.newsCont = []
     this.newsService.getNews().subscribe(news$ => {
       let news = JSON.parse(news$)
+      console.log(news.length)
       for (var i = 0; i < news.length; i++) {
         news.completed = false; //ez a táblázat elején a jelölőnégyzet alapértelmezett állapota
         this.newsCont.push(news[i])
@@ -142,7 +177,7 @@ export class EditNewsAllNewsComponent implements OnInit {
     }, (err) => {
       console.error(err)
     })
-    this.allNewsCont = this.newsCont
+    console.log(this.newsCont)
   }
 
 }

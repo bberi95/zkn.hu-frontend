@@ -1,0 +1,48 @@
+<div class="mid">
+    <h2>Hír szerkesztése</h2>
+</div>
+
+<div class="container">
+    <button class="header" (click)="saveNews()">Mentés</button>
+    <button class="header" (click)="saveAndQuit()">Mentés és bezárás</button>
+    <button class="header" (click)="closeDialog()">Bezárás</button>
+</div>
+
+<div class="row">
+    <div class="container">
+        <form>
+            <div class="row">
+                <div class="col-50">
+                    <label for="title">Cím:</label>
+                    <input type="text" id="title" required [(ngModel)]="news.title" name="title" #titleInput="ngModel">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-50">
+                    <label for="text">A hír szövege:</label>
+                    <textarea class="textarea" required [(ngModel)]="news.text" minlength="20" name="text"
+                        #textInput="ngModel"></textarea>
+                </div>
+            </div>
+
+            <div class="row" id="sending">
+                <div class="col-50">
+                    <label for="sign">Aláírás:</label>
+                    <input type="text" id="sign" required [(ngModel)]="news.sign" name="sign" #signInput="ngModel">
+
+                    <label for="rank">Beosztás:</label>
+                    <input type="text" id="rank" required [(ngModel)]="news.rank" name="rank" #rankInput="ngModel">
+                </div>
+                <div class="col-50">
+                    <label for="date">Létrehozás dátuma:</label>
+                    <input type="text" id="date" disabled [ngModel]="news.date | date:'yyyy.MM.dd HH:mm:ss'" name="date" #modDateInput="ngModel">
+                    <label for="active">Közzétéve</label>
+                    <mat-slide-toggle id="active" [(ngModel)]="news.active" name="active" (change)="saveNews(news)"></mat-slide-toggle>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

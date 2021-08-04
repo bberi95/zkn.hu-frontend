@@ -28,6 +28,7 @@ import { EditDistrictDatesComponent } from './edit-userform/edit-district-dates/
 import { EditUserformGarbagesComponent } from './edit-userform/edit-userform-garbages/edit-userform-garbages.component';
 import { EditNewsAllNewsComponent } from './edit-news/edit-news-all-news/edit-news-all-news.component';
 import { CreateNewsComponent } from './edit-news/create-news/create-news.component';
+import { EditNewsDialogComponent } from './edit-news/edit-news-dialog/edit-news-dialog.component';
 
 
 
@@ -46,6 +47,7 @@ import { CreateNewsComponent } from './edit-news/create-news/create-news.compone
     EditUserformGarbagesComponent,
     EditNewsAllNewsComponent,
     CreateNewsComponent,
+    EditNewsDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { CreateNewsComponent } from './edit-news/create-news/create-news.compone
   ],
   entryComponents: [
     DialogComponent,
-    RequestDialogComponent
+    RequestDialogComponent,
+    EditNewsDialogComponent,
   ],
   providers: [
     UploadService,
