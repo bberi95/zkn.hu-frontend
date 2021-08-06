@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog.component';
 import { UploadService } from '../../upload.service';
-import { DataService } from '../../../../data.service';
+import { NewsService } from 'src/app/news.service';
 
 @Component({
   selector: 'app-create-news',
@@ -16,6 +16,7 @@ export class CreateNewsComponent implements OnInit {
   sign: string
   rank: string
   active: boolean = true;
+  archive: boolean = false;
 
   newsUrl = '/api/upload'
 
@@ -26,9 +27,10 @@ export class CreateNewsComponent implements OnInit {
     rank: '',
     picCount: 0,
     active: true,
+    archive: false,
   }
 
-  constructor(public dialog: MatDialog, public uploadService: UploadService, private NewsService: DataService) { }
+  constructor(public dialog: MatDialog, public uploadService: UploadService, private NewsService: NewsService) { }
 
   public uploadNewsDialog() {
     this.news.title = this.title
@@ -37,6 +39,7 @@ export class CreateNewsComponent implements OnInit {
     this.news.sign = this.sign
     this.news.rank = this.rank
     this.news.active = this.active
+    this.news.archive = this.archive
     this.uploadService.getData(this.news, this.newsUrl)
     let dialogRef = this.dialog.open(DialogComponent, {
       id: 'upload-news',

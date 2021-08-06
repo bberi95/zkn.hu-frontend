@@ -23,7 +23,8 @@ export interface News {
   sign: string,
   rank: string,
   pics: [],
-  active: boolean
+  active: boolean,
+  archive: boolean,
 }
 
 @Injectable()

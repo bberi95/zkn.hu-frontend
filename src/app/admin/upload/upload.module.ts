@@ -29,6 +29,7 @@ import { EditUserformGarbagesComponent } from './edit-userform/edit-userform-gar
 import { EditNewsAllNewsComponent } from './edit-news/edit-news-all-news/edit-news-all-news.component';
 import { CreateNewsComponent } from './edit-news/create-news/create-news.component';
 import { EditNewsDialogComponent } from './edit-news/edit-news-dialog/edit-news-dialog.component';
+import { ArchiveComponent } from './edit-news/archive/archive.component';
 
 
 
@@ -48,6 +49,7 @@ import { EditNewsDialogComponent } from './edit-news/edit-news-dialog/edit-news-
     EditNewsAllNewsComponent,
     CreateNewsComponent,
     EditNewsDialogComponent,
+    ArchiveComponent,
   ],
   imports: [
     CommonModule,

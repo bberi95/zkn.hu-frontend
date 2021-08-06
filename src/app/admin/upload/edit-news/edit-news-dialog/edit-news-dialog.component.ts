@@ -1,7 +1,7 @@
+import { AnimationKeyframesSequenceMetadata } from '@angular/animations';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DataService } from 'src/app/data.service';
-import { News } from 'src/app/news.service';
+import { News, NewsService } from 'src/app/news.service';
 
 @Component({
   selector: 'app-edit-news-dialog',
@@ -17,8 +17,9 @@ export class EditNewsDialogComponent implements OnInit {
     text: '',
     sign: '',
     rank: '',
-    picCount: null,
+    picCount: [],
     active: null,
+    archive: null,
   }
 
   saving = false
@@ -29,12 +30,11 @@ export class EditNewsDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: any,
     public dialogRef: MatDialogRef<EditNewsDialogComponent>,
-    private newsService: DataService,
+    private newsService: NewsService,
   ) { }
 
   public saveNews() {
     let updated = {
-      // modDate: new Date(),
       id: this.news.id,
       title: this.news.title,
       date: this.news.date,
@@ -43,6 +43,7 @@ export class EditNewsDialogComponent implements OnInit {
       rank: this.news.rank,
       picCount: this.news.picCount,
       active: this.news.active,
+      archive: this.news.archive,
     }
     console.log(this.news.title, this.news.id)
     this.newsService.updateNews(updated).subscribe(res => {
@@ -94,6 +95,7 @@ export class EditNewsDialogComponent implements OnInit {
     this.news.rank = this.data.rank
     this.news.picCount = this.data.picCount
     this.news.active = this.data.active
+    this.news.archive = this.data.archive
     // this.showArray();
   }
 

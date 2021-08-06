@@ -19,6 +19,11 @@ export class EditNewsComponent implements OnInit {
       id: 'create-news',
       label: 'Új hír létrehozása',
       active: false,
+    },
+    {
+      id: 'archive',
+      label: 'Archívum',
+      active: false,
     }
   ]
 

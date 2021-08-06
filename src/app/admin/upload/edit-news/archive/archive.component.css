@@ -33,7 +33,7 @@ a {
     color:#00983A;
 }
 
-.archive {
+.archive, .delete{
     margin-right: 10px;
 }
 

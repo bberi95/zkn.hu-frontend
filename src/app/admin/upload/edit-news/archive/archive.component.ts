@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { faArchive } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
-import { EditNewsDialogComponent } from '../edit-news-dialog/edit-news-dialog.component';
+import { faTrashAlt, faUndoAlt } from '@fortawesome/free-solid-svg-icons';
 import { NewsService } from 'src/app/news.service';
+import { EditNewsDialogComponent } from '../edit-news-dialog/edit-news-dialog.component';
 
 @Component({
-  selector: 'app-edit-news-all-news',
-  templateUrl: './edit-news-all-news.component.html',
-  styleUrls: ['./edit-news-all-news.component.css']
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
+  styleUrls: ['./archive.component.css']
 })
-export class EditNewsAllNewsComponent implements OnInit {
+export class ArchiveComponent implements OnInit {
 
   newsCont = []
-  archiveBox = faArchive;
+  unArchive = faUndoAlt;
+  trashcan = faTrashAlt;
   rowsPerPage: number = 10
   rowsPerPageCont = [5, 10, 15, 20, 25]
-  p = 1;
+  p=1;
 
   saving = false
   saved: boolean
@@ -89,6 +90,7 @@ export class EditNewsAllNewsComponent implements OnInit {
         this.header.completed = false
       }
     }
+
   }
 
   setAll() {
@@ -103,6 +105,7 @@ export class EditNewsAllNewsComponent implements OnInit {
       this.allComplete = false;
       this.newsCont.forEach(t => t.completed = false);
     }
+
   }
 
   selectReset() {
@@ -124,27 +127,62 @@ export class EditNewsAllNewsComponent implements OnInit {
     })
   }
 
-  archiveNews(news): void {
-    news.archive = true
-    this.newsService.archiveNews(news).subscribe(res => {
+  deleteNews(news): void {
+    //ide kell egy tényleges törlés
+    this.newsService.deleteNews(news).subscribe(res =>{
       this.saving = true
       if (res.saved) {
         this.saved = true
-        this.message = 'Sikeres mentés'
+        this.message = 'Sikeres törlés'
       } else {
         this.saved = false
-        this.message = 'A mentés sikertelen'
+        this.message = 'A törlés sikertelen'
       }
       console.log(this.message)
     })
     this.ngOnInit()
   }
 
-  archiveMultiple() {
+    unArchiveNews(news): void {
+      news.archive = false
+      this.newsService.archiveNews(news).subscribe(res =>{
+        this.saving = true
+        if (res.saved) {
+          this.saved = true
+          this.message ='Sikeres mentés'
+        } else {
+          this.saved = false
+          this.message = 'A mentés sikertelen'
+        }
+        console.log(this.message)
+      })
+      this.ngOnInit()
+    }
+
+  public deleteMultiple() {
     this.newsCont.forEach(t => {
       if (t.completed) {
-        t.archive = true
-        this.newsService.archiveNews(t).subscribe(res => {
+        this.newsService.deleteNews(t).subscribe(res =>{
+          this.saving = true
+          if (res.saved) {
+            this.saved = true
+            this.message = 'Sikeres mentés'
+          } else {
+            this.saved = false
+            this.message = 'A mentés sikertelen'
+          }
+          console.log(this.message)
+        })
+      }
+    })
+    this.ngOnInit()
+  }
+
+  unArchiveMultiple() {
+    this.newsCont.forEach( t =>{
+      if (t.completed) {
+        t.archive = false
+        this.newsService.archiveNews(t).subscribe(res =>{
           this.saving = true
           if (res.saved) {
             this.saved = true
@@ -162,7 +200,7 @@ export class EditNewsAllNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.newsCont = []
-    this.newsService.getNews().subscribe(news$ => {
+    this.newsService.getArchives().subscribe(news$ => {
       let news = JSON.parse(news$)
       for (var i = 0; i < news.length; i++) {
         news.completed = false; //ez a táblázat elején a jelölőnégyzet alapértelmezett állapota

@@ -1,6 +1,9 @@
 <div>
-    <a class="archive" (click)="archiveMultiple()">
-        <fa-icon class="archive" [icon]="archiveBox"></fa-icon>Kijelöltek archiválása
+    <a class="archive" (click)="unArchiveMultiple()">
+        <fa-icon class="archive" [icon]="unArchive"></fa-icon>Kijelöltek visszaállítása
+    </a>
+    <a class="delete" (click)="deleteMultiple()">
+        <fa-icon class="delete" [icon]="trashcan"></fa-icon>Kijelöltek végleges törlése
     </a>
 </div>
 <table>
@@ -12,7 +15,8 @@
         <th>Létrehozva</th>
         <th>Szerző</th>
         <th>Beosztás</th>
-        <th>Archiválás</th>
+        <th>Visszaállítás</th>
+        <th>Végleges törlés</th>
     </tr>
     <tr *ngFor="let item of newsCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
         <td><input type="checkbox" [(ngModel)]="item.completed" (ngModelChange)="updateAllComplete()"></td>
@@ -27,7 +31,8 @@
         <td>{{item.date | date: 'yyyy.MM.dd HH:mm:ss'}}</td>
         <td>{{item.sign}}</td>
         <td>{{item.rank}}</td>
-        <td class="mid"><a (click)="archiveNews(item)"><fa-icon [icon]="archiveBox"></fa-icon></a></td>
+        <td class="mid"><a (click)="unArchiveNews(item)"><fa-icon [icon]="unArchive"></fa-icon></a></td>
+        <td class="mid"><a (click)="deleteNews(item)"><fa-icon [icon]="trashcan"></fa-icon></a></td>
     </tr>
 </table>
 <pagination-controls class="custom-pagination" (pageChange)="p = $event; selectReset()" autoHide="true"

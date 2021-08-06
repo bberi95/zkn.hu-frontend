@@ -3,13 +3,13 @@ Az admin felületen a hírek részt átdolgozni:
     - Idővel rengeteg cikk lesz, kelleni fog egy kereső amiben lehet név részlettel keresni.
     - Ha nagyon sok türelmem van lehetne 2-3 hír elrendezési designt előre definiálni, és lehessen
       kiválasztani, hogy melyiket akarjuk használni adott hírhez.
-    - Cikk archiválási lehetőség.
-    - Törlés helyett inkább archiválás legyen, és az archív híreknél lehessen csak ténylegesen törölni.
+    - Az új hír létrehozása ne külön fül legyen, hanem a hírek feletti gombra nyomva jöjjön fel ugyanaz a
+      párbeszéd ablak, mint amivel szerkesztem a hírt, csak nincs előre kitöltve. Valahol láttam ilyet...
+    - Valamiért a hír módosítás null-ra állítja az adatbázisban a hírek pics Array cuccát, és eltöri az oldalt
 
 Hírek:
-    - Valahány hír (elsőre mondjuk 10 után) legyen pagination
     - A hírek megjelenése valamilyen egységes formában történjen (kép méret, elhelyezkedés, cím + 1 mondat leírás,
-      majd cikkre kattintás után jelenjen meg a teljes.
+      majd cikkre kattintás után jelenjen meg a teljes. Jelenleg a híreknél orbitálisan rohadt nagy ami megjelenik
     - Több kép megjelenítése a cikken belül, lehetne galéria / slider szerűen.
 
 Általános:
