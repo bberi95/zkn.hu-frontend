@@ -38,7 +38,7 @@ export class EditNewsAllNewsComponent implements OnInit {
     options = {
       id: 'newsDialog',
       panelClass: 'overl',
-      maxWidth: '1400px',
+      maxWidth: '1100px',
       width: '100vw',
       height: '100vh',
       data: {

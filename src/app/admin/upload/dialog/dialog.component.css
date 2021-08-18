@@ -13,6 +13,10 @@
     justify-content: flex-end;
 }
 
+.mat-dialog-actions, .mat-dialog-content {
+    margin: auto;
+}
+
 .container {
     height: 100%;
 }

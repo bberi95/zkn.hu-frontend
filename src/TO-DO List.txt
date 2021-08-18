@@ -1,11 +1,8 @@
 Az admin felületen a hírek részt átdolgozni:
     - Listában a fejlécekre kattintva módosuljon a sorrend adott oszlop tartalma alapján.
     - Idővel rengeteg cikk lesz, kelleni fog egy kereső amiben lehet név részlettel keresni.
-    - Ha nagyon sok türelmem van lehetne 2-3 hír elrendezési designt előre definiálni, és lehessen
-      kiválasztani, hogy melyiket akarjuk használni adott hírhez.
-    - Az új hír létrehozása ne külön fül legyen, hanem a hírek feletti gombra nyomva jöjjön fel ugyanaz a
-      párbeszéd ablak, mint amivel szerkesztem a hírt, csak nincs előre kitöltve. Valahol láttam ilyet...
-    - Valamiért a hír módosítás null-ra állítja az adatbázisban a hírek pics Array cuccát, és eltöri az oldalt
+    - A hírek kiegészítése egy rövid 1-2 mondatos leírással ami bemutatja miről szól a cikk, ez jelenne meg a
+      híreknél a cím alatt, megnyitás után lenne a hír teljes szövege.
 
 Hírek:
     - A hírek megjelenése valamilyen egységes formában történjen (kép méret, elhelyezkedés, cím + 1 mondat leírás,
