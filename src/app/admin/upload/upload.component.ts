@@ -68,7 +68,7 @@ export class UploadComponent implements OnInit {
         },
         {
             id: 'menu-pub-data',
-            label: 'Közédekű',
+            label: 'Közérdekű',
             active: false,
         },
         {
