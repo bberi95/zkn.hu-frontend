@@ -1,1 +1,58 @@
-<p>contact works!</p>
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<!-- <div class="row" *ngFor="let item of contactsCont; index as i">
+    <div class="col-40">
+      <h1>{{item.name}}</h1>
+      <p>Cím: {{item.address}}</p>
+      <p>Telefonszám: {{item.phone}}</p>
+      <p *ngIf="item.mobile">Mobil: {{item.mobile}}</p>
+      <p>Email cím: {{item.email}}</p>
+      <h2>Nyitvatartás:</h2>
+      <p *ngFor="let days of item.openHours"> {{days.day}}: {{days.time}}</p>
+    </div>
+    <div class="col-60">
+      <agm-map [latitude]="item.latitude" [longitude]="item.longitude" [zoom]="zoom" [scrollwheel]="false">
+        <agm-marker [latitude]="item.latitude" [longitude]="item.longitude"></agm-marker>
+      </agm-map>
+    </div>
+</div> -->
+
+<div *ngFor="let item of contactsCont; index as i">
+  <div class="row" *ngIf="i % 2 == 0">
+    <div class="col-40">
+      <h1>{{item.name}}</h1>
+      <p>Cím: {{item.address}}</p>
+      <p>Telefonszám: {{item.phone}}</p>
+      <p *ngIf="item.mobile">Mobil: {{item.mobile}}</p>
+      <p>Email cím: {{item.email}}</p>
+      <h2>Nyitvatartás:</h2>
+      <p *ngFor="let days of item.openHours"> {{days.day}}: {{days.time}}</p>
+    </div>
+    <div class="col-60">
+      <agm-map [latitude]="item.latitude" [longitude]="item.longitude" [zoom]="zoom" [scrollwheel]="false">
+        <agm-marker [latitude]="item.latitude" [longitude]="item.longitude"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <div class ="row" *ngIf="i % 2 != 0">
+    <div class="col-60">
+      <agm-map [latitude]="item.latitude" [longitude]="item.longitude" [zoom]="zoom" [scrollwheel]="false">
+        <agm-marker [latitude]="item.latitude" [longitude]="item.longitude"></agm-marker>
+      </agm-map>
+    </div>
+    <div class="col-40">
+      <h1>{{item.name}}</h1>
+      <p>Cím: {{item.address}}</p>
+      <p>Telefonszám: {{item.phone}}</p>
+      <p *ngIf="item.mobile">Mobil: {{item.mobile}}</p>
+      <p>Email cím: {{item.email}}</p>
+      <h2>Nyitvatartás:</h2>
+      <p *ngFor="let days of item.openHours"> {{days.day}}: {{days.time}}</p>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [scrollwheel]="false">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map> -->

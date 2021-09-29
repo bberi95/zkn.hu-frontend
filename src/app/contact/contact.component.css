@@ -1,0 +1,43 @@
+agm-map {
+    height: 100%;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.col-40 {
+    -ms-flex: 40%; /* IE10 */
+    flex: 40%;
+    padding: 0 16px;
+    margin:0;
+}
+
+.col-60 {
+    -ms-flex: 60%; /* IE10 */
+    flex: 60%;
+    padding: 0 16px;
+    margin: 0;
+}
+ 
+div {
+    width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+    padding: 0;
+}
+
+@media (max-width: 1000px) {
+    .row{
+        flex-direction: column;
+    }
+}

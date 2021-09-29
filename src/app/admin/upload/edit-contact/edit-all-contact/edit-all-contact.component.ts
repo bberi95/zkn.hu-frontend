@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService} from 'src/app/data.service';
+
+export interface Contact {
+  name: string,
+  address: string,
+  phone: string,
+  mobile: string,
+  email: string,
+  openHours: Array<any>,
+  latitude: number,
+  longitude: number
+}
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  selector: 'app-edit-all-contact',
+  templateUrl: './edit-all-contact.component.html',
+  styleUrls: ['./edit-all-contact.component.css']
 })
-export class ContactComponent implements OnInit {
+export class EditAllContactComponent implements OnInit {
 
   contactsCont = []
-  zoom = 16;
-
-  // title = 'Ügyfélszolgálati iroda';
-  // lat = 46.845790;
-  // lng = 16.845487;
 
   constructor(
     private contactService: DataService

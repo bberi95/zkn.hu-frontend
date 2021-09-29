@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Street } from './calendar/calendar.component';
+import { Contact } from './admin/upload/edit-contact/edit-all-contact/edit-all-contact.component';
 import { Garbage } from './admin/upload/edit-userform/edit-userform-garbages/edit-userform-garbages.component';
 
 export interface News {
@@ -22,6 +23,22 @@ export interface News {
 export class DataService {
 
   constructor(private http: HttpClient) { }
+
+  // Contact services:
+  public getContact(): Observable<any> {
+    return this.http.get<any>('api/contact');
+  }
+  public saveContact(contact: Contact): Observable<any> {
+    return this.http.post<any>('api/save-contact', contact);
+  }
+  public deleteContact(contact: Contact): Observable<any> {
+    return this.http.post<any>('api/delete-contact', contact);
+  }
+  public updateContact(contact: Contact): Observable<any> {
+    return this.http.post<any>('api/update-contact', contact);
+  }
+
+  // Others:
 
   public getIntro(): Observable<any> {
     return this.http.get<any>('/api/intro');

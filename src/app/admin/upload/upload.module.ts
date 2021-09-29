@@ -14,8 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgmCoreModule } from '@agm/core';
 
 import { UploadComponent } from './upload.component';
 import { DialogComponent } from './dialog/dialog.component';
@@ -33,6 +31,8 @@ import { CreateNewsComponent } from './edit-news/create-news/create-news.compone
 import { EditNewsDialogComponent } from './edit-news/edit-news-dialog/edit-news-dialog.component';
 import { ArchiveComponent } from './edit-news/archive/archive.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
+import { EditAllContactComponent } from './edit-contact/edit-all-contact/edit-all-contact.component';
+import { CreateContactComponent } from './edit-contact/create-contact/create-contact.component';
 
 
 
@@ -54,6 +54,8 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
     EditNewsDialogComponent,
     ArchiveComponent,
     EditContactComponent,
+    EditAllContactComponent,
+    CreateContactComponent,
   ],
   imports: [
     CommonModule,
@@ -70,10 +72,6 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
     MatInputModule,
     NgxPaginationModule,
     MatSlideToggleModule,
-    BrowserModule,
-    AgmCoreModule.forRoot({
-      apiKey: ''
-    }) //ide majd kéne egy apikey, elvileg 7 dollár / 1000 használat
   ],
   exports: [
     UploadComponent,

@@ -1,7 +1,15 @@
-<h1>{{ title }}</h1>
 
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<div class="header">
+  <h2>Kapcsolatok szerkesztése</h2>
+</div>
+<div class="header">
+  <a *ngFor="let item of subMenuItems" id="{{item.id}}" (click)="toggle(item)" 
+  [ngClass]="{'active': item.active}">{{item.label}}</a>
+</div>
+<div>
+  <app-edit-all-contact *ngIf="editedSub === 'edit-all-contact'">
+  </app-edit-all-contact>
+
+  <app-create-contact *ngIf="editedSub === 'create-contact'">
+  </app-create-contact>
+</div>

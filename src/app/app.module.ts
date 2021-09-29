@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgxPaginationModule } from 'ngx-pagination'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { AgmCoreModule } from '@agm/core'
 
 import { AppComponent } from './app.component'
 import { HomeComponent } from './home/home.component'
@@ -81,6 +82,9 @@ import { UserformComponent } from './userform/userform.component';
     MatProgressBarModule,
     NgxPaginationModule,
     FontAwesomeModule,
+    AgmCoreModule.forRoot({
+      apiKey:''
+    })
   ],
   entryComponents: [
     GarbageComponent

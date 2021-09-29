@@ -30,7 +30,11 @@ export class CreateNewsComponent implements OnInit {
     archive: false,
   }
 
-  constructor(public dialog: MatDialog, public uploadService: UploadService, private NewsService: NewsService) { }
+  constructor(
+    public dialog: MatDialog,
+    public uploadService: UploadService,
+    private NewsService: NewsService
+  ) { }
 
   public uploadNewsDialog() {
     this.news.title = this.title

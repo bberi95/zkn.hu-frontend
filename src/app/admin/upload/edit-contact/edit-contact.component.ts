@@ -7,12 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditContactComponent implements OnInit {
 
-  title = 'Kapcsolat térkép';
-  zoom = 16;
-  lat = 46.845790;
-  lng = 16.845487;
+  editedSub="edit-all-contact"
+
+  subMenuItems = [
+    {
+      id: 'edit-all-contact',
+      label: 'Kapcsolatok',
+      active: true,
+    },
+    {
+      id: 'create-contact',
+      label: 'Új kapcsolat rögzítése',
+      active: false,
+    }
+  ]
 
   constructor() { }
+
+  toggle(item) {
+    this.subMenuItems.forEach(function(items) {
+      items.active = false;
+    });
+    this.editedSub = item.id;
+    item.active = true;
+  }
 
   ngOnInit(): void {
   }
