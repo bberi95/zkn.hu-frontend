@@ -33,6 +33,7 @@ import { ArchiveComponent } from './edit-news/archive/archive.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { EditAllContactComponent } from './edit-contact/edit-all-contact/edit-all-contact.component';
 import { CreateContactComponent } from './edit-contact/create-contact/create-contact.component';
+import { EditContactDialogComponent } from './edit-contact/edit-contact-dialog/edit-contact-dialog.component';
 
 
 
@@ -56,6 +57,7 @@ import { CreateContactComponent } from './edit-contact/create-contact/create-con
     EditContactComponent,
     EditAllContactComponent,
     CreateContactComponent,
+    EditContactDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -80,6 +82,7 @@ import { CreateContactComponent } from './edit-contact/create-contact/create-con
     DialogComponent,
     RequestDialogComponent,
     EditNewsDialogComponent,
+    EditContactDialogComponent,
   ],
   providers: [
     UploadService,

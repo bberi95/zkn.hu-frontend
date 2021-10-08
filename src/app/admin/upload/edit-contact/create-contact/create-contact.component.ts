@@ -16,6 +16,7 @@ export class CreateContactComponent implements OnInit {
   openHours: Array<any>
   latitude: number
   longitude: number
+  active: boolean
 
   daysArr = [
     { day: 'Hétfő', time: '', },
@@ -36,6 +37,7 @@ export class CreateContactComponent implements OnInit {
     openHours: [],
     latitude: 0,
     longitude: 0,
+    active: true,
   }
 
   saving = false
@@ -55,6 +57,7 @@ export class CreateContactComponent implements OnInit {
     this.contact.openHours = this.daysArr
     this.contact.latitude = this.latitude
     this.contact.longitude = this.longitude
+    this.contact.active = true
     this.DataService.saveContact(this.contact).subscribe(res => {
       this.saving = true
       if (res.saved) {

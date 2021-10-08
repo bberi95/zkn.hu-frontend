@@ -1,0 +1,61 @@
+<div class="mid">
+    <h2>Kapcsolat szerkesztése</h2>
+</div>
+
+<div class="container">
+    <button class="header" (click)="saveNews()">Mentés</button>
+    <button class="header" (click)="saveAndQuit()">Mentés és bezárás</button>
+    <button class="header" (click)="closeDialog()">Bezárás</button>
+</div>
+
+<div class="row">
+    <div class="container">
+        <form (ngSubmit)="createContact()">
+            <div class="row">
+                <label for="name">Kapcsolat neve</label>
+                <input type="text" id="name" required [(ngModel)]="contact.name" name="name" #titleInput="ngModel">
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <label for="address">Cím</label>
+                    <input type="text" id="address" required [(ngModel)]="contact.address" name="address" #titleInput="ngModel">
+                </div>
+                <div class="col-50">
+                    <label for="email">Email cím</label>
+                    <input type="text" id="email" required [(ngModel)]="contact.email" name="email" #titleInput="ngModel">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <label for="phone">Telefon</label>
+                    <input type="text" id="phone" required [(ngModel)]="contact.phone" name="phone" #titleInput="ngModel">
+                </div>
+                <div class="col-50">
+                    <label for="mobile">Mobil</label>
+                    <input type="text" id="mobile" [(ngModel)]="contact.mobile" name="mobile" #titleInput="ngModel">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <label for="latitude">Szélesség</label>
+                    <input type="text" id="latitude" required [(ngModel)]="contact.latitude" name="latitude"
+                        #titleInput="ngModel">
+                </div>
+                <div class="col-50">
+                    <label for="longitude">Hosszúság</label>
+                    <input type="text" id="longitude" required [(ngModel)]="contact.longitude" name="longitude"
+                        #titleInput="ngModel">
+                </div>
+            </div>
+            <div class="row">
+                <p>Nyitvatartási idő:</p>
+            </div>
+            <div class="row">
+                <div class="col-14" *ngFor="let item of contact.openHours">
+                    <label for="day">{{item.day}}</label>
+                    <input type="text" id="day" required [(ngModel)]="item.time" name="day" #titleInput="ngModel">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,22 +1,29 @@
 <table>
-    <tr>
-      <th>Kapcsolat neve</th>
-      <th>Cím</th>
-      <th>Telefon</th>
-      <th>Mobil</th>
-      <th>Email</th>
-      <th>Nyitvatartás</th>
-      <th>Szélesség</th>
-      <th>Hosszúság</th>
-    </tr>
-    <tr *ngFor="let item of contactsCont">
-      <td>{{item.name}}</td>
-      <td>{{item.address}}</td>
-      <td>{{item.phone}}</td>
-      <td>{{item.mobile}}</td>
-      <td>{{item.email}}</td>
-      <td>nyitvatartás</td>
-      <td>{{item.latitude}}</td>
-      <td>{{item.longitude}}</td>
-    </tr>
-  </table>
+  <tr>
+    <th>Közzétéve</th>
+    <th>Kapcsolat neve</th>
+    <th>Cím</th>
+    <th>Részletek és szerkesztés</th>
+    <th>Törlés</th>
+  </tr>
+  <tr *ngFor="let item of contactsCont | paginate: { itemsPerPage: rowsPerPage, currentPage: p }">
+    <td class="mid">
+      <mat-slide-toggle [(ngModel)]="item.active" (change)="changeContact(item)"></mat-slide-toggle>
+    </td>
+    <td>{{item.name}}</td>
+    <td>{{item.address}}</td>
+    <td class="mid">
+      <a (click)="openDialog(item)" title="Kapcsolat szerkesztése">
+          Megnyitás
+      </a>
+  </td>
+    <td class="mid"><a (click)="deleteContact(item)"><fa-icon [icon]="trashcan"></fa-icon></a></td>
+  </tr>
+</table>
+<pagination-controls class="custom-pagination" (pageChange)="p = $event" autoHide="true"
+    responsive="true" previousLabel="Előző" nextLabel="Következő">
+</pagination-controls>
+<label for="rowsPerPage">Sorok száma oldalanként:</label>
+<select id="rowsPerPage" [(ngModel)]="rowsPerPage" name="rowsPerPage" (change)="p = 1">
+  <option *ngFor="let item of rowsPerPageCont">{{item}}</option>
+</select>

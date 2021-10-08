@@ -20,3 +20,7 @@ Adatbázis:
     - Valami admin cucc amivel kb úgy lehessen szerkeszteni az adatbázist, mint az nlsoft program technikaiban.
       Lehessen benne új "oszlopot" tulajdonságot adni az objektumnak, csoportosan módosítani meg mittudomén.
       Ne kelljen mindig scriptet írni ha tömegesen módosítani akarok valamit.
+
+Admin-contact:
+    - edit-contact-dialog-component: rájönni hogy miért mindegyik napra a zárva töltődik bel.
+      Beletenni a közzétéve aktív-inaktív csúszkát ide is

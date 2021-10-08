@@ -1,0 +1,102 @@
+.mat-slide-toggle.mat-checked /deep/ .mat-slide-toggle-bar {
+    background: lightgreen;
+}
+.mat-slide-toggle.mat-checked /deep/ .mat-slide-toggle-thumb {
+    background: #00983A;
+}
+.mat-slide-toggle /deep/ .mat-slide-toggle-bar {
+    background: lightcoral;
+}
+.mat-slide-toggle /deep/ .mat-slide-toggle-thumb {
+    background: red;
+}
+  .mid {
+    text-align: center;
+  }
+
+  h2 {
+    margin-top: 0;
+    padding-top: 20px;
+    width: 100%;
+  }
+      
+  button.header {
+    width: auto;
+    margin: 0px 5px;
+    background-color: #00983A;
+    color: white;
+    padding: 11px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size:17px;
+  }
+  
+  /* Neten talált form css szabályai... */
+  .row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  
+  .col-14 {
+    -ms-flex: 14.25%;
+    flex: 14.25%;
+    padding: 0 5px;
+}
+    
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+    padding: 0 16px;
+  }
+    
+  .container {
+    background-color: #f2f2f2;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 2%;
+    padding: 10px 20px 10px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  
+  /* number inputnál eltünteti a fel le nyilakat - kivétel mozilla */
+  input::-webkit-inner-spin-button,
+  input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin:0;
+  }
+  
+  /* number inputnál eltünteti a fel le nyilakat - mozilla */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  input[type=text],
+  input[type=email],
+  input[type=phone],
+  input[type=number],
+  textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: normal;
+    display: block;
+  }
+    
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column; /*column-reverse volt eredetileg */
+    }
+  }

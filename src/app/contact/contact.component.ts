@@ -24,7 +24,9 @@ export class ContactComponent implements OnInit {
     this.contactService.getContact().subscribe(contact$ =>{
       let contact = JSON.parse(contact$)
       for (let i = 0; i< contact.length; i++) {
-        this.contactsCont.push(contact[i])
+        if (contact[i].active == true){
+          this.contactsCont.push(contact[i])
+        }
       }
     }, (err) => {
       console.error(err)

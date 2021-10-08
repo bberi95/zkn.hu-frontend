@@ -1,4 +1,4 @@
-/* .mat-slide-toggle.mat-checked /deep/ .mat-slide-toggle-bar {
+.mat-slide-toggle.mat-checked /deep/ .mat-slide-toggle-bar {
     background: lightgreen;
 }
 .mat-slide-toggle.mat-checked /deep/ .mat-slide-toggle-thumb {
@@ -9,7 +9,7 @@
 }
 .mat-slide-toggle /deep/ .mat-slide-toggle-thumb {
     background: red;
-} */
+}
 
 table {
     margin: 5%;
@@ -28,27 +28,27 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-/* a {
+a {
     cursor:pointer;
     color:#00983A;
 }
 
-.archive {
+/* .archive {
     margin-right: 10px;
 } */
 
-/* .mid {
+.mid {
     text-align: center !important;
 }
 
 fa-icon {
     font-size: 2rem;
     cursor:pointer;
-} */
+}
 
-/* .custom-pagination /deep/ .ngx-pagination .current {
+.custom-pagination /deep/ .ngx-pagination .current {
     background: #00983A;
-} */
+}
 
 label {
     font-weight: normal;
