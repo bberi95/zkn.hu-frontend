@@ -13,38 +13,36 @@
         <form (ngSubmit)="createContact()">
             <div class="row">
                 <label for="name">Kapcsolat neve</label>
-                <input type="text" id="name" required [(ngModel)]="contact.name" name="name" #titleInput="ngModel">
+                <input type="text" id="name" required [(ngModel)]="contact.name" name="name">
             </div>
             <div class="row">
                 <div class="col-50">
                     <label for="address">Cím</label>
-                    <input type="text" id="address" required [(ngModel)]="contact.address" name="address" #titleInput="ngModel">
+                    <input type="text" id="address" required [(ngModel)]="contact.address" name="address">
                 </div>
                 <div class="col-50">
                     <label for="email">Email cím</label>
-                    <input type="text" id="email" required [(ngModel)]="contact.email" name="email" #titleInput="ngModel">
+                    <input type="text" id="email" required [(ngModel)]="contact.email" name="email">
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
                     <label for="phone">Telefon</label>
-                    <input type="text" id="phone" required [(ngModel)]="contact.phone" name="phone" #titleInput="ngModel">
+                    <input type="text" id="phone" required [(ngModel)]="contact.phone" name="phone">
                 </div>
                 <div class="col-50">
                     <label for="mobile">Mobil</label>
-                    <input type="text" id="mobile" [(ngModel)]="contact.mobile" name="mobile" #titleInput="ngModel">
+                    <input type="text" id="mobile" [(ngModel)]="contact.mobile" name="mobile">
                 </div>
             </div>
             <div class="row">
                 <div class="col-50">
                     <label for="latitude">Szélesség</label>
-                    <input type="text" id="latitude" required [(ngModel)]="contact.latitude" name="latitude"
-                        #titleInput="ngModel">
+                    <input type="text" id="latitude" required [(ngModel)]="contact.latitude" name="latitude">
                 </div>
                 <div class="col-50">
                     <label for="longitude">Hosszúság</label>
-                    <input type="text" id="longitude" required [(ngModel)]="contact.longitude" name="longitude"
-                        #titleInput="ngModel">
+                    <input type="text" id="longitude" required [(ngModel)]="contact.longitude" name="longitude">
                 </div>
             </div>
             <div class="row">
@@ -52,9 +50,13 @@
             </div>
             <div class="row">
                 <div class="col-14" *ngFor="let item of contact.openHours">
-                    <label for="day">{{item.day}}</label>
-                    <input type="text" id="day" required [(ngModel)]="item.time" name="day" #titleInput="ngModel">
+                    <label [for]="item.day">{{item.day}}</label>
+                    <input type="text" [id]="item.day" required [(ngModel)]="item.time" [name]="item.day">
                 </div>
+                <!-- <div class="col-14" *ngFor="let item of contact.openHours">
+                    <label for="item.day">{{item.day}}</label>
+                    <input type="text" id="item.day" required [(ngModel)]="item.time" name="day" #titleInput="ngModel">
+                </div> -->
             </div>
         </form>
     </div>

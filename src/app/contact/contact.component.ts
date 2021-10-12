@@ -11,10 +11,6 @@ export class ContactComponent implements OnInit {
   contactsCont = []
   zoom = 16;
 
-  // title = 'Ügyfélszolgálati iroda';
-  // lat = 46.845790;
-  // lng = 16.845487;
-
   constructor(
     private contactService: DataService
   ) { }

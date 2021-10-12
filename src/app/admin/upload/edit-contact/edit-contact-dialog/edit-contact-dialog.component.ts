@@ -34,18 +34,7 @@ export class EditContactDialogComponent implements OnInit {
   ) { }
 
   public saveContact() {
-    let updated = {
-      name: this.contact.name,
-      address: this.contact.address,
-      phone: this.contact.phone,
-      mobile: this.contact.mobile,
-      email: this.contact.email,
-      openHours: this.contact.openHours,
-      latitude: this.contact.latitude,
-      longitude: this.contact.longitude,
-      active: this.contact.active
-    }
-    console.log(this.contact.name)
+    let updated = this.contact
     this.contactService.updateContact(updated).subscribe(res => {
       this.saving = true
       if (res.saved) {
@@ -83,15 +72,7 @@ export class EditContactDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contact.name = this.data.name
-    this.contact.address = this.data.address
-    this.contact.phone = this.data.phone
-    this.contact.mobile = this.data.mobile
-    this.contact.email = this.data.email
-    this.contact.openHours = this.data.openHours
-    this.contact.latitude = this.data.latitude
-    this.contact.longitude = this.data.longitude
-    this.contact.active = this.data.active
+    this.contact = this.data
   }
 
 }

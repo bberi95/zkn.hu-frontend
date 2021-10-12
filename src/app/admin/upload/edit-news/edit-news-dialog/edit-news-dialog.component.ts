@@ -33,17 +33,7 @@ export class EditNewsDialogComponent implements OnInit {
   ) { }
 
   public saveNews() {
-    let updated = {
-      id: this.news.id,
-      title: this.news.title,
-      date: this.news.date,
-      text: this.news.text,
-      sign: this.news.sign,
-      rank: this.news.rank,
-      picCount: this.news.picCount,
-      active: this.news.active,
-      archive: this.news.archive,
-    }
+    let updated = this.news
     console.log(this.news.title, this.news.id)
     this.newsService.updateNews(updated).subscribe(res => {
       this.saving = true
@@ -81,21 +71,8 @@ export class EditNewsDialogComponent implements OnInit {
     this.dialogRef.close()
   }
 
-  // showArray() {
-  //   document.getElementById("pics").innerHTML = this.pics.join("; ")
-  // }
-
   ngOnInit(): void {
-    this.news.id = this.data.id
-    this.news.title = this.data.title
-    this.news.date = this.data.date
-    this.news.text = this.data.text
-    this.news.sign = this.data.sign
-    this.news.rank = this.data.rank
-    this.news.picCount = this.data.picCount
-    this.news.active = this.data.active
-    this.news.archive = this.data.archive
-    // this.showArray();
+    this.news = this.data
   }
 
 }

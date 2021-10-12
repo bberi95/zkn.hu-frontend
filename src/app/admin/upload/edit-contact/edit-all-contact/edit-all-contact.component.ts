@@ -79,6 +79,7 @@ export class EditAllContactComponent implements OnInit {
       }
       console.log(this.message)
     })
+    this.ngOnInit()
   }
 
   deleteContact(contact): void {
